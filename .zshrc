@@ -1,5 +1,5 @@
 # Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
+HISTFILE=$ZDOTDIR/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 
@@ -26,7 +26,7 @@ source /usr/share/fzf/completion.zsh
 
 
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/shengdi/.zshrc'
+zstyle :compinstall filename '$ZDOTDIR/.zshrc'
 
 autoload -Uz compinit
 compinit
