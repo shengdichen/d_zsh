@@ -17,6 +17,10 @@ setopt nomatch
 
 # use vi keybindings
 bindkey -v
+
+
+# external plug-ins {{{
+# fzf
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
@@ -31,6 +35,7 @@ source /usr/share/fzf/completion.zsh
     /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh\
     ]] && source\
     /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# }}}
 
 
 # End of lines configured by zsh-newuser-install
