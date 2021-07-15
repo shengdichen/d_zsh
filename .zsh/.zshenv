@@ -22,11 +22,12 @@ export GPG_TTY
 # }}}
 
 # PATH {{{
+PYTHON_PACKAGES="${HOME}/.local/bin"
 NPM_PACKAGES="${HOME}/.npm_pack"
 
 # remove duplications
 typeset -U path
-path=("$NPM_PACKAGES" $path)
+path=("$PYTHON_PACKAGES" "$NPM_PACKAGES" $path)
 # }}}
 
 # MAN {{{
