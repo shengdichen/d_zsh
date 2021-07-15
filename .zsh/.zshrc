@@ -136,9 +136,6 @@ RPROMPT='%(?..%S%F{009}%?)%s%F{none}'
 
 alias nvi='/mnt/x/myData/dev/nvim_nightly_build/nvim.appimage'
 
-# for shell invocation of gpg
-GPG_TTY=$(tty)
-export GPG_TTY
 
 
 # npm {{{

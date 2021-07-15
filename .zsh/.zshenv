@@ -15,6 +15,12 @@ export XMODIFIERS=@im=ibus
 # }}}
 
 
+# GPG {{{
+# for shell invocation of gpg
+GPG_TTY=$(tty)
+export GPG_TTY
+# }}}
+
 # use nvim with |Man| plugin as pager for man
 export MANPAGER='nvim +Man!'
 
