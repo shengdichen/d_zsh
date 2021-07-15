@@ -29,6 +29,12 @@ typeset -U path
 path=("$NPM_PACKAGES" $path)
 # }}}
 
+# MAN {{{
 # use nvim with |Man| plugin as pager for man
 export MANPAGER='nvim +Man!'
+
+# safely append the man-path to npm's packages by preserving MANPATH if already
+# defined, otherwise "source" it with $ manpath
+export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
+# }}}
 
