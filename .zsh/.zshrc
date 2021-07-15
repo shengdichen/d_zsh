@@ -137,7 +137,3 @@ RPROMPT='%(?..%S%F{009}%?)%s%F{none}'
 #           RPROMPT='%h'
 # }}}
 
-alias nvi='/mnt/x/myData/dev/nvim_nightly_build/nvim.appimage'
-
-
-
