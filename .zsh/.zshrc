@@ -139,12 +139,6 @@ alias nvi='/mnt/x/myData/dev/nvim_nightly_build/nvim.appimage'
 
 
 # npm {{{
-# location of all (user-specific) globally installed npm packages
-NPM_PACKAGES="${HOME}/.npm-packages"
-
-export PATH="$PATH:$NPM_PACKAGES/bin"
-
-
 # safely append the man-path to npm's packages by preserving MANPATH if already
 # defined, otherwise "source" it with $ manpath
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"

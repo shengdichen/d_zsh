@@ -21,6 +21,14 @@ GPG_TTY=$(tty)
 export GPG_TTY
 # }}}
 
+# PATH {{{
+NPM_PACKAGES="${HOME}/.npm_pack"
+
+# remove duplications
+typeset -U path
+path=("$NPM_PACKAGES" $path)
+# }}}
+
 # use nvim with |Man| plugin as pager for man
 export MANPAGER='nvim +Man!'
 
