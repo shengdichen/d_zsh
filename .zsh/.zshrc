@@ -86,6 +86,8 @@ alias nv="nvim -c Vifm"
 # stat firefox in wayland
 alias ff="nohup env MOZ_ENABLE_WAYLAND=1 firefox -P 1>/dev/null 2>&1 &"
 alias fd="nohup env MOZ_ENABLE_WAYLAND=1 firefox-developer-edition -P 1>/dev/null 2>&1 &"
+
+alias lyx="nohup env QT_PLUGIN_PATH=/usr/lib/qt/plugins lyx 1>/dev/null 2>&1 &"
 # }}}
 
 
