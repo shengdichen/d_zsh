@@ -136,20 +136,5 @@ RPROMPT='%(?..%S%F{009}%?)%s%F{none}'
 
 alias nvi='/mnt/x/myData/dev/nvim_nightly_build/nvim.appimage'
 
-# for shell invocation of gpg
-GPG_TTY=$(tty)
-export GPG_TTY
 
-
-# npm {{{
-# location of all (user-specific) globally installed npm packages
-NPM_PACKAGES="${HOME}/.npm-packages"
-
-export PATH="$PATH:$NPM_PACKAGES/bin"
-
-
-# safely append the man-path to npm's packages by preserving MANPATH if already
-# defined, otherwise "source" it with $ manpath
-export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
-# }}}
 
