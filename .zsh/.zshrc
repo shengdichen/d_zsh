@@ -37,7 +37,7 @@ load_zsh_highlighter () {
 
     [[ -e "$path_zsh_highlighter" ]] && source "$path_zsh_highlighter"
 }
-load_zsh_highlighter
+load_zsh_highlighter && unfunction load_zsh_highlighter
 # }}}
 
 
