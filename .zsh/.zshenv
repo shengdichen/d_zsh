@@ -28,3 +28,4 @@ export MANPAGER='nvim +Man!'
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 # }}}
 
+# vim: foldmethod=marker
