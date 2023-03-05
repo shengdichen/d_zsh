@@ -209,4 +209,4 @@ RPROMPT='%(?..%S%F{009}%?)%s%F{none}'
 #           RPROMPT='%h'
 # }}}
 
-# vim: foldmethod=marker
+# vim: filetype=zsh foldmethod=marker
