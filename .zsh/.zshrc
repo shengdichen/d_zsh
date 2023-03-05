@@ -27,56 +27,6 @@ autoload -Uz compinit
 compinit
 # }}}
 
-# external plug-ins {{{
-# fzf
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
-
-# requires the package:
-#       zsh-syntax-highlighting
-#
-# NOTE:
-#   per instruction in the package's GitHub page:
-#       ->  https://github.com/zsh-users/zsh-syntax-highlighting#faq
-#   this should be sourced near the end of .zshrc
-load_zsh_highlighter () {
-    local path_zsh_highlighter=\
-/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-    [[ -e "$path_zsh_highlighter" ]] && source "$path_zsh_highlighter"
-}
-load_zsh_highlighter && unfunction load_zsh_highlighter
-
-# pip zsh-completion {{{
-function _pip_completion {
-  local words cword
-  read -Ac words
-  read -cn cword
-  reply=( $( COMP_WORDS="$words[*]" \
-             COMP_CWORD=$(( cword-1 )) \
-             PIP_AUTO_COMPLETE=1 $words[1] 2>/dev/null ))
-}
-compctl -K _pip_completion pip
-# }}}
-# }}}
-# }}}
-
-#use {$ x <argv>} to open file in background
-x() {
-    nohup \
-        env WAYLAND_DISPLAY='' \
-        "$@" \
-    1>/dev/null 2>&1 &
-}
-
-x_wl() {
-    nohup "$@" 1>/dev/null 2>&1 &
-}
-
-source ~/.zsh/alias.zsh
-
-
-
 # visual {{{
 # use steady, beam-style cursor
 echo -ne '\e[6 q'
@@ -107,5 +57,55 @@ fi
 RPROMPT='%(?..%S%F{009}%?)%s%F{none}'
 # }}}
 # }}}
+
+# external plug-ins {{{
+# fzf
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+
+# zsh-syntax-highlighting {{{
+# requires the package:
+#       zsh-syntax-highlighting
+#
+# NOTE:
+#   per instruction in the package's GitHub page:
+#       ->  https://github.com/zsh-users/zsh-syntax-highlighting#faq
+#   this should be sourced near the end of .zshrc
+load_zsh_highlighter () {
+    local path_zsh_highlighter=\
+/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+    [[ -e "$path_zsh_highlighter" ]] && source "$path_zsh_highlighter"
+}
+load_zsh_highlighter && unfunction load_zsh_highlighter
+# }}}
+
+# pip zsh-completion {{{
+function _pip_completion {
+  local words cword
+  read -Ac words
+  read -cn cword
+  reply=( $( COMP_WORDS="$words[*]" \
+             COMP_CWORD=$(( cword-1 )) \
+             PIP_AUTO_COMPLETE=1 $words[1] 2>/dev/null ))
+}
+compctl -K _pip_completion pip
+# }}}
+# }}}
+# }}}
+
+#use {$ x <argv>} to open file in background
+x() {
+    nohup \
+        env WAYLAND_DISPLAY='' \
+        "$@" \
+    1>/dev/null 2>&1 &
+}
+
+x_wl() {
+    nohup "$@" 1>/dev/null 2>&1 &
+}
+
+source ~/.zsh/alias.zsh
 
 # vim: filetype=zsh foldmethod=marker
