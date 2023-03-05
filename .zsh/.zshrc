@@ -89,7 +89,6 @@ compctl -K _pip_completion pip
 # common elements:
 #   %h OR %!
 #       ->  current history event number, i.e., "line number"
-#           RPROMPT='%h'
 #   %?
 #       ->  exit code of previous command
 #   %S/%s
