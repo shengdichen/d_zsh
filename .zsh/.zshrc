@@ -1,3 +1,4 @@
+# zsh {{{
 # Lines configured by zsh-newuser-install
 HISTFILE=$ZDOTDIR/.histfile
 HISTSIZE=1000
@@ -51,6 +52,7 @@ zstyle :compinstall filename '$ZDOTDIR/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+# }}}
 
 #use {$ x <argv>} to open file in background
 x() {
