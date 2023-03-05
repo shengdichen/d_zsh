@@ -1,5 +1,5 @@
 # zsh {{{
-# Lines configured by zsh-newuser-install
+# zsh-newuser-install {{{
 HISTFILE=$ZDOTDIR/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
@@ -18,7 +18,14 @@ setopt nomatch
 
 # use vi keybindings
 bindkey -v
+# }}}
 
+# compinstall {{{
+zstyle :compinstall filename '$ZDOTDIR/.zshrc'
+
+autoload -Uz compinit
+compinit
+# }}}
 
 # external plug-ins {{{
 # fzf
@@ -40,18 +47,6 @@ load_zsh_highlighter () {
 }
 load_zsh_highlighter && unfunction load_zsh_highlighter
 # }}}
-
-
-# End of lines configured by zsh-newuser-install
-
-
-
-# The following lines were added by compinstall
-zstyle :compinstall filename '$ZDOTDIR/.zshrc'
-
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
 # }}}
 
 #use {$ x <argv>} to open file in background
