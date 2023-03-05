@@ -58,7 +58,7 @@ RPROMPT='%(?..%S%F{009}%?)%s%F{none}'
 # }}}
 # }}}
 
-# external plug-ins {{{
+# externals {{{
 # fzf
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
