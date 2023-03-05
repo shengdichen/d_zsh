@@ -68,9 +68,6 @@ x_wl() {
 
 source ~/.zsh/alias.zsh
 
-# use steady, beam-style cursor
-echo -ne '\e[6 q'
-
 
 # pip {{{
 # pip zsh completion start
@@ -86,6 +83,10 @@ compctl -K _pip_completion pip
 # pip zsh completion end
 # }}}
 
+
+# visual {{{
+# use steady, beam-style cursor
+echo -ne '\e[6 q'
 
 # PROMPT, aka, PS* {{{
 # common elements:
@@ -111,6 +112,7 @@ else
 fi
 
 RPROMPT='%(?..%S%F{009}%?)%s%F{none}'
+# }}}
 # }}}
 
 # vim: filetype=zsh foldmethod=marker
