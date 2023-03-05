@@ -102,9 +102,39 @@ alias x_pcm="nohup \
     1>/dev/null 2>&1 &\
 "
 
-# stat firefox in wayland
-alias ff="nohup env MOZ_ENABLE_WAYLAND=1 firefox -P 1>/dev/null 2>&1 &"
-alias fd="nohup env MOZ_ENABLE_WAYLAND=1 firefox-developer-edition -P 1>/dev/null 2>&1 &"
+# firefox {{{
+# developer edition {{{
+alias x_fd="nohup \
+    env \
+        MOZ_ENABLE_WAYLAND=0 \
+    firefox-developer-edition -P \
+    1>/dev/null 2>&1 &\
+"
+
+alias x_fd_wl="nohup \
+    env \
+        MOZ_ENABLE_WAYLAND=1 \
+    firefox-developer-edition -P \
+    1>/dev/null 2>&1 &\
+"
+# }}}
+
+# vanilla {{{
+alias x_ff="nohup \
+    env \
+        MOZ_ENABLE_WAYLAND=0 \
+    firefox -P \
+    1>/dev/null 2>&1 &\
+"
+
+alias x_ff_wl="nohup \
+    env \
+        MOZ_ENABLE_WAYLAND=1 \
+    firefox -P \
+    1>/dev/null 2>&1 &\
+"
+# }}}
+# }}}
 
 alias lyx="nohup env QT_PLUGIN_PATH=/usr/lib/qt/plugins lyx 1>/dev/null 2>&1 &"
 # }}}
