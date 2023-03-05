@@ -94,6 +94,13 @@ alias m='make'
 # speed up calling nvim
 alias nv="nvim -c Vifm"
 
+# env-set'g necessary when invoked under sway
+alias x_pcm="nohup \
+    env \
+        _JAVA_AWT_WM_NONREPARENTING=1 \
+    pycharm\
+    1>/dev/null 2>&1 &\
+"
 
 # stat firefox in wayland
 alias ff="nohup env MOZ_ENABLE_WAYLAND=1 firefox -P 1>/dev/null 2>&1 &"
