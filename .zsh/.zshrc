@@ -66,7 +66,12 @@ alias g='git'
 
 # tmux-related {{{
 # starting the tmux server
-alias tstart='tmux -2 -f ~/.tmux.conf start-server \; source-file ~/.tmux/startup/default.tmux'
+alias tstart='\
+    tmux \
+    -2 \
+    -f ~/.tmux.conf \
+    start-server \; source-file ~/.tmux/startup/default.tmux\
+'
 
 # shortcut for attaching a specific tmux session
 alias tatt='tmux -2 attach-session'
