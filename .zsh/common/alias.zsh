@@ -1,7 +1,7 @@
 alias c='clear'
 alias q='exit'
 
-# NOTE: unlike with bash, NO extra setup necessary for completion with only 'g'
+# NOTE: unlike bash, NO extra setup necessary for auto-completion
 alias g='git'
 
 # typing |make| can get really cumbersome if done a couple hundred times a day
