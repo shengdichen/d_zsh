@@ -1,4 +1,3 @@
-# aliases {{{
 alias c='clear'
 alias q='exit'
 
@@ -7,6 +6,5 @@ alias g='git'
 
 # typing |make| can get really cumbersome if done a couple hundred times a day
 alias m='make'
-# }}}
 
 # vim: filetype=zsh foldmethod=marker
