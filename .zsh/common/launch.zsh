@@ -1,12 +1,9 @@
-x() {
-    nohup \
-        env WAYLAND_DISPLAY='' \
-        "$@" \
-    1>/dev/null 2>&1 &
-}
-
 x_wl() {
     nohup "$@" 1>/dev/null 2>&1 &
+}
+
+x() {
+    WAYLAND_DISPLAY='' x_wl "$@"
 }
 
 # tmux-related {{{
