@@ -33,7 +33,6 @@ alias x_fd="\
     MOZ_ENABLE_WAYLAND=0 \
     x firefox-developer-edition -P \
 "
-
 alias x_fd_wl="\
     MOZ_ENABLE_WAYLAND=1 \
     x_wl firefox-developer-edition -P \
@@ -45,7 +44,6 @@ alias x_ff="\
     MOZ_ENABLE_WAYLAND=0 \
     x firefox -P \
 "
-
 alias x_ff_wl="\
     MOZ_ENABLE_WAYLAND=1 \
     x_wl firefox -P \
