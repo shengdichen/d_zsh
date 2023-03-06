@@ -3,8 +3,7 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
 # for shell invocation of gpg
-GPG_TTY=$(tty)
-export GPG_TTY
+export GPG_TTY=$(tty)
 
 # PATH {{{
 PYTHON_PACKAGES="${HOME}/.local/bin"
