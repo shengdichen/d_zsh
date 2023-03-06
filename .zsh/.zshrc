@@ -94,6 +94,6 @@ compctl -K _pip_completion pip
 # }}}
 # }}}
 
-source ~/.zsh/alias.zsh
+source ~/.zsh/common/alias.zsh
 
 # vim: filetype=zsh foldmethod=marker

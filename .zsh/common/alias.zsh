@@ -1,4 +1,3 @@
-source ~/.zsh/alias.zsh
 x() {
     nohup \
         env WAYLAND_DISPLAY='' \
