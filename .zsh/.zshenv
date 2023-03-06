@@ -1,10 +1,3 @@
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx
-
-# for shell invocation of gpg
-export GPG_TTY=$(tty)
-
 # PATH {{{
 PYTHON_PACKAGES="${HOME}/.local/bin"
 NPM_PACKAGES="${HOME}/.npm_pack"
@@ -22,5 +15,12 @@ export MANPAGER='nvim +Man!'
 # defined, otherwise by "sourcing" it with |$ manpath|
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 # }}}
+
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+
+# for shell invocation of gpg
+export GPG_TTY=$(tty)
 
 # vim: filetype=zsh foldmethod=marker
