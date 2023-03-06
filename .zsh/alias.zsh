@@ -1,3 +1,15 @@
+source ~/.zsh/alias.zsh
+x() {
+    nohup \
+        env WAYLAND_DISPLAY='' \
+        "$@" \
+    1>/dev/null 2>&1 &
+}
+
+x_wl() {
+    nohup "$@" 1>/dev/null 2>&1 &
+}
+
 # aliases {{{
 alias c='clear'
 alias q='exit'

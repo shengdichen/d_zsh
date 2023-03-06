@@ -94,18 +94,6 @@ compctl -K _pip_completion pip
 # }}}
 # }}}
 
-#use {$ x <argv>} to open file in background
-x() {
-    nohup \
-        env WAYLAND_DISPLAY='' \
-        "$@" \
-    1>/dev/null 2>&1 &
-}
-
-x_wl() {
-    nohup "$@" 1>/dev/null 2>&1 &
-}
-
 source ~/.zsh/alias.zsh
 
 # vim: filetype=zsh foldmethod=marker
