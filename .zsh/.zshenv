@@ -19,7 +19,7 @@ path=("$PYTHON_PACKAGES" "$NPM_PACKAGES" $path)
 export MANPAGER='nvim +Man!'
 
 # safely append the man-path to npm's packages by preserving MANPATH if already
-# defined, otherwise "source" it with $ manpath
+# defined, otherwise by "sourcing" it with |$ manpath|
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 # }}}
 
