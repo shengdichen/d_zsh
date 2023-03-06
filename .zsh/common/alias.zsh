@@ -5,9 +5,6 @@ alias q='exit'
 # NOTE: unlike with bash, NO extra setup necessary for completion with only 'g'
 alias g='git'
 
-alias v='vifm /mnt/x/myData /home/shengdi'
-
-
 # typing |make| can get really cumbersome if done a couple hundred times a day
 alias m='make'
 
