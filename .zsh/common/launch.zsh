@@ -18,6 +18,9 @@ alias tstart='\
 alias tatt='tmux -2 attach-session'
 # }}}
 
+# append value for screen color-temp (typically 3700)
+alias x_gamma="x_wl gammastep -O"
+
 # env-set'g necessary when invoked under sway
 alias x_pcm="\
     _JAVA_AWT_WM_NONREPARENTING=1\
