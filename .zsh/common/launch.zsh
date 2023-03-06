@@ -54,18 +54,13 @@ alias x_ff_wl="\
 # }}}
 
 # lyx {{{
-alias x_lyx="nohup \
-    env \
-        QT_PLUGIN_PATH=/usr/lib/qt/plugins \
-        WAYLAND_DISPLAY='' \
-    lyx \
-    1>/dev/null 2>&1 &\
+alias x_lyx="\
+    QT_PLUGIN_PATH=/usr/lib/qt/plugins \
+    x lyx \
 "
-alias x_lyx_wl="nohup \
-    env \
-        QT_PLUGIN_PATH=/usr/lib/qt/plugins \
-    lyx \
-    1>/dev/null 2>&1 &\
+alias x_lyx_wl="\
+    QT_PLUGIN_PATH=/usr/lib/qt/plugins \
+    x_wl lyx \
 "
 # }}}
 
