@@ -27,12 +27,7 @@ alias x_pcm="nohup \
     1>/dev/null 2>&1 &\
 "
 
-alias x_kps="nohup \
-    env \
-        WAYLAND_DISPLAY='' \
-    keepassxc \
-    1>/dev/null 2>&1 &\
-"
+alias x_kps="x_wl keepassxc"
 
 # firefox {{{
 # developer edition {{{
