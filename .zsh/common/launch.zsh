@@ -1,7 +1,6 @@
 x_wl() {
     nohup "$@" 1>/dev/null 2>&1 &
 }
-
 x() {
     WAYLAND_DISPLAY='' x_wl "$@"
 }
