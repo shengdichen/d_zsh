@@ -1,14 +1,10 @@
-# input-methods {{{
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
-# }}}
 
-# GPG {{{
 # for shell invocation of gpg
 GPG_TTY=$(tty)
 export GPG_TTY
-# }}}
 
 # PATH {{{
 PYTHON_PACKAGES="${HOME}/.local/bin"
