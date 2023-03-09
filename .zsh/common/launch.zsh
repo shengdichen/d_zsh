@@ -27,7 +27,7 @@ alias x_pcm="\
     x_wl pycharm\
 "
 
-# firefox edition {{{
+# firefox {{{
 alias x_fd_wl="\
     MOZ_ENABLE_WAYLAND=1\
     x_wl firefox-developer-edition -P\
