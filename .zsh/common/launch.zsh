@@ -40,15 +40,9 @@ alias x_fd_wl="\
 "
 # }}}
 
-# lyx {{{
 alias x_lyx="\
     QT_PLUGIN_PATH=/usr/lib/qt/plugins\
     x lyx\
 "
-alias x_lyx_wl="\
-    QT_PLUGIN_PATH=/usr/lib/qt/plugins\
-    x_wl lyx\
-"
-# }}}
 
 # vim: filetype=zsh foldmethod=marker
