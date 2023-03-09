@@ -30,13 +30,13 @@ alias x_pcm="\
 alias x_kps="x_wl keepassxc"
 
 # firefox edition {{{
-alias x_fd="\
-    MOZ_ENABLE_WAYLAND=0\
-    x firefox-developer-edition -P\
-"
 alias x_fd_wl="\
     MOZ_ENABLE_WAYLAND=1\
     x_wl firefox-developer-edition -P\
+"
+alias x_fd="\
+    MOZ_ENABLE_WAYLAND=0\
+    x firefox-developer-edition -P\
 "
 # }}}
 
