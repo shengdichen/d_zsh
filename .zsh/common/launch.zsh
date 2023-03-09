@@ -21,6 +21,11 @@ alias tatt='tmux -2 attach-session'
 # append value for screen color-temp (typically 3700)
 alias x_gamma="x_wl gammastep -O"
 
+alias x_lyx="\
+    QT_PLUGIN_PATH=/usr/lib/qt/plugins\
+    x lyx\
+"
+
 # env-set'g necessary when invoked under sway
 alias x_pcm="\
     _JAVA_AWT_WM_NONREPARENTING=1\
@@ -37,10 +42,5 @@ alias x_fd="\
     x firefox-developer-edition -P\
 "
 # }}}
-
-alias x_lyx="\
-    QT_PLUGIN_PATH=/usr/lib/qt/plugins\
-    x lyx\
-"
 
 # vim: filetype=zsh foldmethod=marker
