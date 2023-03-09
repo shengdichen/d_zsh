@@ -27,8 +27,6 @@ alias x_pcm="\
     x_wl pycharm\
 "
 
-alias x_kps="x_wl keepassxc"
-
 # firefox edition {{{
 alias x_fd_wl="\
     MOZ_ENABLE_WAYLAND=1\
