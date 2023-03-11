@@ -46,4 +46,10 @@ alias x_fd="\
 # launch as daemon
 alias x_fctx="x_wl fcitx5 -d"
 
+# for op'ns requiring keyring, e.g., lock & install
+alias poetry_nokeyring="\
+    PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring\
+    poetry\
+"
+
 # vim: filetype=zsh foldmethod=marker
