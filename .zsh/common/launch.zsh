@@ -43,4 +43,7 @@ alias x_fd="\
 "
 # }}}
 
+# launch as daemon
+alias x_fctx="x_wl fcitx5 -d"
+
 # vim: filetype=zsh foldmethod=marker
