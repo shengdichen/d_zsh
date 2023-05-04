@@ -1,15 +1,3 @@
-# input-methods {{{
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx
-# }}}
-
-# GPG {{{
-# for shell invocation of gpg
-GPG_TTY=$(tty)
-export GPG_TTY
-# }}}
-
 # PATH {{{
 PYTHON_PACKAGES="${HOME}/.local/bin"
 NPM_PACKAGES="${HOME}/.npm_pack"
@@ -24,8 +12,15 @@ path=("$PYTHON_PACKAGES" "$NPM_PACKAGES" $path)
 export MANPAGER='nvim +Man!'
 
 # safely append the man-path to npm's packages by preserving MANPATH if already
-# defined, otherwise "source" it with $ manpath
+# defined, otherwise by "sourcing" it with |$ manpath|
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 # }}}
+
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+
+# for shell invocation of gpg
+export GPG_TTY=$(tty)
 
 # vim: filetype=zsh foldmethod=marker
