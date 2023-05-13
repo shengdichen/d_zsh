@@ -19,12 +19,8 @@ bindkey -v
 # basic completion
 autoload -Uz compinit; compinit
 
-# make the most of auto-completion of zsh
 setopt extendedglob
-
-# also match dot-files
-setopt globdots
-
+setopt globdots  # also match dot-files
 setopt nomatch
 
 # menu-like completion
