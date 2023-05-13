@@ -40,6 +40,9 @@ bindkey -M menuselect 'j' down-line-or-search
 bindkey -M menuselect 'k' up-line-or-search
 bindkey -M menuselect 'l' forward-char
 
+bindkey -M menuselect '/' history-incremental-search-forward
+bindkey -M menuselect '?' history-incremental-search-backward
+
 compinit
 # }}}
 
