@@ -23,7 +23,8 @@ bindkey -v
 # compinstall {{{
 zstyle :compinstall filename '$ZDOTDIR/.zshrc'
 
-autoload -Uz compinit
+# basic completion
+autoload -Uz compinit; compinit
 
 # menu-like completion
 zstyle ':completion:*' menu select
@@ -47,8 +48,6 @@ bindkey -M menuselect '\r' accept-line
 bindkey -M menuselect 't' accept-and-hold   # select multiple
 
 bindkey -M menuselect 'u' undo
-
-compinit
 # }}}
 
 # visual {{{
