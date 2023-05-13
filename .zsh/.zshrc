@@ -16,8 +16,6 @@ bindkey -v
 # }}}
 
 # completion {{{
-zstyle :compinstall filename '$ZDOTDIR/.zshrc'
-
 # basic completion
 autoload -Uz compinit; compinit
 
