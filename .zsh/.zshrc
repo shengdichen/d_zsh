@@ -26,6 +26,9 @@ zstyle :compinstall filename '$ZDOTDIR/.zshrc'
 # basic completion
 autoload -Uz compinit; compinit
 
+# also match dot-files
+setopt globdots
+
 # menu-like completion
 zstyle ':completion:*' menu select
 
