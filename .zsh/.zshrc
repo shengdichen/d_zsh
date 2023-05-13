@@ -29,6 +29,12 @@ autoload -Uz compinit
 zstyle ':completion:*' menu select
 
 zmodload zsh/complist
+bindkey -M menuselect 'g' beginning-of-history
+bindkey -M menuselect 'G' end-of-history
+
+bindkey -M menuselect '0' beginning-of-line
+bindkey -M menuselect '$' end-of-line
+
 bindkey -M menuselect 'h' backward-char
 bindkey -M menuselect 'j' down-line-or-search
 bindkey -M menuselect 'k' up-line-or-search
