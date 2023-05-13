@@ -28,6 +28,12 @@ autoload -Uz compinit
 # menu-like completion
 zstyle ':completion:*' menu select
 
+zmodload zsh/complist
+bindkey -M menuselect 'h' backward-char
+bindkey -M menuselect 'j' down-line-or-search
+bindkey -M menuselect 'k' up-line-or-search
+bindkey -M menuselect 'l' forward-char
+
 compinit
 # }}}
 
