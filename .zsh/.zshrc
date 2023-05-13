@@ -11,23 +11,23 @@ setopt autocd
 # send out beep/flashes at errors
 setopt beep
 
-# make the most of auto-completion of zsh
-setopt extendedglob
-
-setopt nomatch
-
 # use vi keybindings
 bindkey -v
 # }}}
 
-# compinstall {{{
+# completion {{{
 zstyle :compinstall filename '$ZDOTDIR/.zshrc'
 
 # basic completion
 autoload -Uz compinit; compinit
 
+# make the most of auto-completion of zsh
+setopt extendedglob
+
 # also match dot-files
 setopt globdots
+
+setopt nomatch
 
 # menu-like completion
 zstyle ':completion:*' menu select
