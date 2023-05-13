@@ -24,6 +24,10 @@ bindkey -v
 zstyle :compinstall filename '$ZDOTDIR/.zshrc'
 
 autoload -Uz compinit
+
+# menu-like completion
+zstyle ':completion:*' menu select
+
 compinit
 # }}}
 
