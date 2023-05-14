@@ -45,6 +45,18 @@ bindkey -M menuselect '\r' accept-line
 bindkey -M menuselect 't' accept-and-hold   # select multiple
 
 bindkey -M menuselect 'u' undo
+
+# pip zsh-completion {{{
+function _pip_completion {
+  local words cword
+  read -Ac words
+  read -cn cword
+  reply=( $( COMP_WORDS="$words[*]" \
+             COMP_CWORD=$(( cword-1 )) \
+             PIP_AUTO_COMPLETE=1 $words[1] 2>/dev/null ))
+}
+compctl -K _pip_completion pip
+# }}}
 # }}}
 
 # visual {{{
@@ -98,18 +110,6 @@ load_zsh_highlighter () {
     [[ -e "$path_zsh_highlighter" ]] && source "$path_zsh_highlighter"
 }
 load_zsh_highlighter && unfunction load_zsh_highlighter
-# }}}
-
-# pip zsh-completion {{{
-function _pip_completion {
-  local words cword
-  read -Ac words
-  read -cn cword
-  reply=( $( COMP_WORDS="$words[*]" \
-             COMP_CWORD=$(( cword-1 )) \
-             PIP_AUTO_COMPLETE=1 $words[1] 2>/dev/null ))
-}
-compctl -K _pip_completion pip
 # }}}
 # }}}
 # }}}
