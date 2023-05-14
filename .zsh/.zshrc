@@ -4,6 +4,7 @@ HISTFILE=$ZDOTDIR/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 setopt histignoredups
+setopt histignorespace
 
 # typing `~' will now cd to ~
 setopt autocd
