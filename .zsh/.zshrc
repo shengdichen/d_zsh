@@ -26,6 +26,7 @@ setopt nomatch
 # menu-like completion
 zstyle ':completion:*' menu select
 
+# binds {{{
 zmodload zsh/complist
 bindkey -M menuselect 'g' beginning-of-history
 bindkey -M menuselect 'G' end-of-history
@@ -45,6 +46,7 @@ bindkey -M menuselect '\r' accept-line
 bindkey -M menuselect 't' accept-and-hold   # select multiple
 
 bindkey -M menuselect 'u' undo
+# }}}
 
 # pip zsh-completion {{{
 function _pip_completion {
