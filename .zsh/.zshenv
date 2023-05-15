@@ -25,4 +25,6 @@ export XMODIFIERS=@im=fcitx
 # for shell invocation of gpg
 export GPG_TTY=$(tty)
 
+export FZF_COMPLETION_TRIGGER="jk"
+
 # vim: filetype=zsh foldmethod=marker
