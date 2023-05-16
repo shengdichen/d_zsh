@@ -26,5 +26,8 @@ export XMODIFIERS=@im=fcitx
 export GPG_TTY=$(tty)
 
 export FZF_COMPLETION_TRIGGER="jk"
+export FZF_COMPLETION_OPTS="\
+    --prompt='% ' \
+"
 
 # vim: filetype=zsh foldmethod=marker
