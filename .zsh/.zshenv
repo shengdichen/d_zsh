@@ -27,6 +27,7 @@ export GPG_TTY=$(tty)
 
 export FZF_COMPLETION_TRIGGER="jk"
 export FZF_COMPLETION_OPTS="\
+    --border=none \
     --prompt='% ' \
 "
 
