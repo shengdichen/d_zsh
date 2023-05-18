@@ -94,9 +94,15 @@ RPROMPT='%(?..%S%F{009}%?)%s%F{none}'
 # }}}
 
 # externals {{{
-# fzf
+# fzf {{{
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
+
+bindkey -M vicmd -r "\ec"
+bindkey -M viins -r "\ec"
+bindkey -M vicmd '^Y' fzf-cd-widget
+bindkey -M viins '^Y' fzf-cd-widget
+# }}}
 
 # zsh-syntax-highlighting {{{
 # requires the package:
