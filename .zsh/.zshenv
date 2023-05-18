@@ -29,6 +29,7 @@ export FZF_COMPLETION_TRIGGER="jk"
 export FZF_COMPLETION_OPTS="\
     --border=none \
     --prompt='% ' \
+    --info=inline:' <<  ' \
 "
 
 # vim: filetype=zsh foldmethod=marker
