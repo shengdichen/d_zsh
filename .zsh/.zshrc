@@ -11,20 +11,54 @@ setopt autocd
 # send out beep/flashes at errors
 setopt beep
 
-# make the most of auto-completion of zsh
-setopt extendedglob
-
-setopt nomatch
-
 # use vi keybindings
 bindkey -v
 # }}}
 
-# compinstall {{{
-zstyle :compinstall filename '$ZDOTDIR/.zshrc'
+# completion {{{
+# basic completion
+autoload -Uz compinit; compinit
 
-autoload -Uz compinit
-compinit
+setopt extendedglob
+setopt globdots  # also match dot-files
+setopt nomatch
+
+# menu-like completion
+zstyle ':completion:*' menu select
+
+# binds {{{
+zmodload zsh/complist
+bindkey -M menuselect 'g' beginning-of-history
+bindkey -M menuselect 'G' end-of-history
+
+bindkey -M menuselect '0' beginning-of-line
+bindkey -M menuselect '$' end-of-line
+
+bindkey -M menuselect 'h' backward-char
+bindkey -M menuselect 'j' down-line-or-search
+bindkey -M menuselect 'k' up-line-or-search
+bindkey -M menuselect 'l' forward-char
+
+bindkey -M menuselect '/' history-incremental-search-forward
+bindkey -M menuselect '?' history-incremental-search-backward
+
+bindkey -M menuselect '\r' accept-line
+bindkey -M menuselect 't' accept-and-hold   # select multiple
+
+bindkey -M menuselect 'u' undo
+# }}}
+
+# pip zsh-completion {{{
+function _pip_completion {
+  local words cword
+  read -Ac words
+  read -cn cword
+  reply=( $( COMP_WORDS="$words[*]" \
+             COMP_CWORD=$(( cword-1 )) \
+             PIP_AUTO_COMPLETE=1 $words[1] 2>/dev/null ))
+}
+compctl -K _pip_completion pip
+# }}}
 # }}}
 
 # visual {{{
@@ -78,18 +112,6 @@ load_zsh_highlighter () {
     [[ -e "$path_zsh_highlighter" ]] && source "$path_zsh_highlighter"
 }
 load_zsh_highlighter && unfunction load_zsh_highlighter
-# }}}
-
-# pip zsh-completion {{{
-function _pip_completion {
-  local words cword
-  read -Ac words
-  read -cn cword
-  reply=( $( COMP_WORDS="$words[*]" \
-             COMP_CWORD=$(( cword-1 )) \
-             PIP_AUTO_COMPLETE=1 $words[1] 2>/dev/null ))
-}
-compctl -K _pip_completion pip
 # }}}
 # }}}
 # }}}
