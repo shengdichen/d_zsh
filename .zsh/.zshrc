@@ -1,11 +1,14 @@
 # zsh {{{
-# zsh-newuser-install {{{
+# history {{{
 HISTFILE=$ZDOTDIR/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
+
 setopt histignoredups
 setopt histignorespace
+# }}}
 
+# zsh-newuser-install {{{
 # typing `~' will now cd to ~
 setopt autocd
 
