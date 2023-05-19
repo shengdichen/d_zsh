@@ -1,4 +1,11 @@
 # zsh {{{
+# bind {{{
+# use vicmd & viins
+bindkey -v
+
+bindkey -M viins 'JJ' vi-cmd-mode
+# }}}
+
 # history {{{
 HISTFILE=$ZDOTDIR/.histfile
 HISTSIZE=1000
@@ -14,13 +21,6 @@ setopt autocd
 
 # send out beep/flashes at errors
 setopt beep
-
-# binds {{{
-# use vi keybindings
-bindkey -v
-
-bindkey -M viins 'JJ' vi-cmd-mode
-# }}}
 # }}}
 
 # completion {{{
