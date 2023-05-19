@@ -5,10 +5,10 @@ setopt extendedglob
 setopt globdots  # also match dot-files
 setopt nomatch
 
-# menu-like completion
+# menu {{{
+# enable menu-like completion
 zstyle ':completion:*' menu select
 
-# binds {{{
 zmodload zsh/complist
 bindkey -M menuselect 'g' beginning-of-history
 bindkey -M menuselect 'G' end-of-history
