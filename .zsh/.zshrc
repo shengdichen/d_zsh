@@ -1,12 +1,6 @@
-# zsh {{{
-source ~/.zsh/conf/general.zsh
-
-source ~/.zsh/conf/completion.zsh
-
-source ~/.zsh/conf/visual.zsh
-
-source ~/.zsh/conf/external.zsh
-# }}}
+for f in ~/.zsh/conf/**/*.zsh; do
+    source "$f"
+done
 
 for f in ~/.zsh/common/**/*.zsh; do
     source "$f"
