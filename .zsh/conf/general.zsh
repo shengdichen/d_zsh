@@ -14,12 +14,10 @@ setopt histignoredups
 setopt histignorespace
 # }}}
 
-# zsh-newuser-install {{{
-# typing `~' will now cd to ~
+# spare leading |cd|
 setopt autocd
 
 # send out beep/flashes at errors
 setopt beep
-# }}}
 
 # vim: filetype=zsh foldmethod=marker
