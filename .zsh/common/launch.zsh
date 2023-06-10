@@ -2,7 +2,7 @@ x_wl() {
     nohup "$@" 1>/dev/null 2>&1 &
 }
 x() {
-    WAYLAND_DISPLAY='' x_wl "$@"
+    WAYLAND_DISPLAY="" x_wl "$@"
 }
 
 # tmux-related {{{
@@ -15,7 +15,7 @@ alias tstart='\
 '
 
 # shortcut for attaching a specific tmux session
-alias tatt='tmux -2 attach-session'
+alias tatt="tmux -2 attach-session"
 # }}}
 
 # append value for screen color-temp (typically 3700)
