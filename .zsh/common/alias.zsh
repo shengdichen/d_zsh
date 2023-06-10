@@ -1,12 +1,12 @@
-alias c='clear'
-alias q='exit'
+alias c="clear"
+alias q="exit"
 
-alias fh='free -h'
+alias fh="free -h"
 
 # NOTE: unlike bash, NO extra setup necessary for auto-completion
-alias g='git'
+alias g="git"
 
-alias m='make'
+alias m="make"
 
 # ag->fzf->EDITOR
 alias afe="\
