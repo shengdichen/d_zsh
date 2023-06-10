@@ -8,4 +8,18 @@ alias g='git'
 
 alias m='make'
 
+# ag->fzf->EDITOR
+alias afe="\
+    ag \
+        --line-numbers --noheading --nobreak \
+        --hidden --unrestricted \
+        . \
+    | \
+    fzf \
+    | \
+    awk \
+        -F : \
+        '{cmd=\"\$EDITOR +\"\$2\" -- \"\$1; system(cmd)}' \
+"
+
 # vim: filetype=zsh foldmethod=marker
