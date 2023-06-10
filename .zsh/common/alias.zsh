@@ -20,6 +20,6 @@ alias afe="\
     awk \
         -F : \
         '{cmd=\"\$EDITOR +\"\$2\" -- \"\$1; system(cmd)}' \
-    "
+"
 
 # vim: filetype=zsh foldmethod=marker
