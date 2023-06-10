@@ -7,12 +7,12 @@ x() {
 
 # tmux-related {{{
 # starting the tmux server
-alias tstart='\
+alias tstart="\
     tmux\
     -2\
     -f ~/.tmux.conf\
-    start-server \; source-file ~/.tmux/startup/default.tmux\
-'
+    start-server \; source-file \"\${HOME}/.tmux/startup/default.tmux\"\
+"
 
 # shortcut for attaching a specific tmux session
 alias tatt="tmux -2 attach-session"
