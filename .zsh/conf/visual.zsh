@@ -1,5 +1,5 @@
 # use steady, beam-style cursor
-echo -ne '\e[6 q'
+echo -ne "\e[6 q"
 
 # PROMPT, aka, PS* {{{
 # common elements:
@@ -19,12 +19,12 @@ echo -ne '\e[6 q'
 
 if [ $SHLVL -gt 3 ];
 then
-    PROMPT='%F{015}%#%F{none} '
+    PROMPT="%F{015}%#%F{none} "
 else
-    PROMPT='%S%F{015}%#%s%F{none} '
+    PROMPT="%S%F{015}%#%s%F{none} "
 fi
 
-RPROMPT='%(?..%S%F{009}%?)%s%F{none}'
+RPROMPT="%(?..%S%F{009}%?)%s%F{none}"
 # }}}
 
 # vim: filetype=zsh foldmethod=marker
