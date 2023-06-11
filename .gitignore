@@ -1,6 +1,2 @@
-*
-!.gitignore
-!*/
-
-!.zshenv
-!.zshrc
+.zsh/.histfile
+.zsh/.zcompdump
