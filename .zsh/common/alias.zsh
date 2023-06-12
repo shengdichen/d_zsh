@@ -12,7 +12,7 @@ alias m="make"
 alias afe="\
     ag \
         --line-numbers --noheading --nobreak \
-        --hidden --unrestricted \
+        --hidden \
         . \
     | \
     fzf \
