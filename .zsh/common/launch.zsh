@@ -26,14 +26,16 @@ alias x_lyx="\
     x lyx\
 "
 
-# env-set'g necessary when invoked under sway
-alias x_pcm="\
+x_jetbr() {
+    # env-set'g necessary when invoked under sway
     _JAVA_AWT_WM_NONREPARENTING=1\
-    x_wl pycharm\
+    x_wl "$@"
+}
+alias x_pcm="\
+    x_jetbr pycharm\
 "
 alias x_itj="\
-    _JAVA_AWT_WM_NONREPARENTING=1\
-    x_wl idea\
+    x_jetbr idea\
 "
 
 # firefox {{{
