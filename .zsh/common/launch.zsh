@@ -31,6 +31,10 @@ alias x_pcm="\
     _JAVA_AWT_WM_NONREPARENTING=1\
     x_wl pycharm\
 "
+alias x_itj="\
+    _JAVA_AWT_WM_NONREPARENTING=1\
+    x_wl idea\
+"
 
 # firefox {{{
 alias x_fd_wl="\
