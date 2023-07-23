@@ -9,16 +9,21 @@ function set_path() {
     # remove duplications
     typeset -U path
     path=("${LOCAL_BIN}" ${path})
+
+    unset LOCAL LOCAL_BIN
 }
 
 function set_manpath() {
     # use nvim with |Man| plugin as pager for man
     export MANPAGER="nvim +Man!"
 
+    LOCAL="${HOME}/.local"
     LOCAL_MAN="${LOCAL}/share/man"
     # safely append the man-path to npm's packages by preserving MANPATH if already
     # defined, otherwise by "sourcing" it with |$ manpath|
     export MANPATH="${MANPATH-$(manpath)}:${LOCAL_MAN}"
+
+    unset LOCAL LOCAL_MAN
 }
 
 function set_ime() {
