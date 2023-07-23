@@ -1,6 +1,8 @@
 export EDITOR="nvim"
 
 # PATH {{{
+export npm_config_prefix="$HOME/.local"
+
 PYTHON_PACKAGES="${HOME}/.local/bin"
 NPM_PACKAGES="${HOME}/.npm_pack"
 
