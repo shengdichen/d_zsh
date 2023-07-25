@@ -56,4 +56,4 @@ function main() {
 }
 main
 
-# vim: filetype=zsh foldmethod=marker
+unfunction set_path set_manpath set_ime set_gpg set_fzf main
