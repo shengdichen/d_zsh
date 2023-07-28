@@ -5,19 +5,12 @@ function __cursor_config() {
 
 function __prompt_config() {
     # NOTE:
-    #   common elements:
-    #   %h OR %!
-    #       ->  current history event number, i.e., "line number"
-    #   %?
-    #       ->  exit code of previous command
-    #   %S/%s: on/off standout-mode (inverse back-&foreground)
-    #   %K/%k: custom/default background
-    #   %F/%f: custom/default foreground
-    #   %(?.<command_if_true>.<command_if_false>)
-
-    # NOTE:
-    # remember to always reset formatting before concluding the prompt; the
-    # command input would otherwise bear the same formatting
+    #   %K/%k -> custom/default background
+    #   %F/%f -> custom/default foreground
+    #   %S/%s -> on/off standout-mode (inverse back-&foreground)
+    #
+    #   %(<test>.<output_if_true>.<output_if_false>)
+    #   %? -> exit code of previous command
 
     PROMPT="%S%#%s "
 
