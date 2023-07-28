@@ -4,15 +4,15 @@ function __cursor_config() {
 }
 
 function __prompt_config() {
-    # common elements:
+    # NOTE:
+    #   common elements:
     #   %h OR %!
     #       ->  current history event number, i.e., "line number"
     #   %?
     #       ->  exit code of previous command
-    #   %S/%s
-    #       ->  turn on/off standout
-    #   %F
-    #       ->  use custom format
+    #   %S/%s: on/off standout-mode (inverse back-&foreground)
+    #   %K/%k: custom/default background
+    #   %F/%f: custom/default foreground
     #   %(?.<command_if_true>.<command_if_false>)
 
     # NOTE:
