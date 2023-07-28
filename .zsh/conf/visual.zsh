@@ -26,7 +26,7 @@ function __prompt_config() {
 .\
 %K{red}%F{black}%?\
 )\
-%K{none}%F{none}\
+%k%f\
 "
 }
 
