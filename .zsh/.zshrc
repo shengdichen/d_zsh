@@ -1,9 +1,9 @@
-for f in "${ZDOTDIR}"/conf/**/*.zsh; do
-    source "${f}"
-done
+function __source_recursive() {
+    for f in "${ZDOTDIR}"/"$1"/**/*.zsh; do
+        source "${f}"
+    done
+}
 
-for f in "${ZDOTDIR}"/common/**/*.zsh; do
-    source "${f}"
-done
-
-# vim: filetype=zsh foldmethod=marker
+__source_recursive "conf"
+__source_recursive "common"
+unfunction __source_recursive

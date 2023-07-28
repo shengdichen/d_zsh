@@ -1,36 +1,37 @@
-# basic completion
-autoload -Uz compinit; compinit
+function __basic() {
+    autoload -Uz compinit; compinit
 
-setopt extendedglob
-setopt globdots  # also match dot-files
-setopt nomatch
+    setopt extendedglob
+    setopt globdots  # also match dot-files
+    setopt nomatch
+}
 
-# menu {{{
-# enable menu-like completion
-zstyle ':completion:*' menu select
+function __menu_like() {
+    # enable menu-like completion
+    zstyle ':completion:*' menu select
 
-zmodload zsh/complist
-bindkey -M menuselect 'g' beginning-of-history
-bindkey -M menuselect 'G' end-of-history
+    zmodload zsh/complist
+    bindkey -M menuselect 'g' beginning-of-history
+    bindkey -M menuselect 'G' end-of-history
 
-bindkey -M menuselect '0' beginning-of-line
-bindkey -M menuselect '$' end-of-line
+    bindkey -M menuselect '0' beginning-of-line
+    bindkey -M menuselect '$' end-of-line
 
-bindkey -M menuselect 'h' backward-char
-bindkey -M menuselect 'j' down-line-or-search
-bindkey -M menuselect 'k' up-line-or-search
-bindkey -M menuselect 'l' forward-char
+    bindkey -M menuselect 'h' backward-char
+    bindkey -M menuselect 'j' down-line-or-search
+    bindkey -M menuselect 'k' up-line-or-search
+    bindkey -M menuselect 'l' forward-char
 
-bindkey -M menuselect '/' history-incremental-search-forward
-bindkey -M menuselect '?' history-incremental-search-backward
+    bindkey -M menuselect '/' history-incremental-search-forward
+    bindkey -M menuselect '?' history-incremental-search-backward
 
-bindkey -M menuselect '\r' accept-line
-bindkey -M menuselect 't' accept-and-hold   # select multiple
+    bindkey -M menuselect '\r' accept-line
+    bindkey -M menuselect 't' accept-and-hold   # select multiple
 
-bindkey -M menuselect 'u' undo
-# }}}
+    bindkey -M menuselect 'u' undo
+}
 
-# pip zsh-completion {{{
+function __complete_pip() {
 function _pip_completion {
   local words cword
   read -Ac words
@@ -40,13 +41,12 @@ function _pip_completion {
              PIP_AUTO_COMPLETE=1 ${words}[1] 2>/dev/null ))
 }
 compctl -K _pip_completion pip
-# }}}
+}
 
-# npm {{{
 # NOTE:
 #   1. generated with:
 #   $ npm completion
-
+function __complete_npm() {
 if type complete &>/dev/null; then
   _npm_completion () {
     local words cword
@@ -107,6 +107,17 @@ elif type compctl &>/dev/null; then
   }
   compctl -K _npm_completion npm
 fi
-# }}}
+}
 
-# vim: filetype=zsh foldmethod=marker
+function main() {
+    __basic
+    __menu_like
+    __complete_pip
+    __complete_npm
+
+    unfunction __basic __menu_like __complete_pip __complete_npm
+}
+main
+unfunction main
+
+# vim: filetype=zsh

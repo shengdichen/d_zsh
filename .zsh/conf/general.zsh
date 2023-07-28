@@ -1,23 +1,35 @@
-# bind {{{
-# use vicmd & viins
-bindkey -v
+function __bind_vi() {
+    # use vicmd & viins
+    bindkey -v
 
-bindkey -M viins 'JJ' vi-cmd-mode
-# }}}
+    bindkey -M viins 'JJ' vi-cmd-mode
+}
 
-# history {{{
-HISTFILE=$ZDOTDIR/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+function __history() {
+    HISTFILE=$ZDOTDIR/.histfile
+    HISTSIZE=1000
+    SAVEHIST=1000
 
-setopt histignoredups
-setopt histignorespace
-# }}}
+    setopt histignoredups
+    setopt histignorespace
+}
 
-# spare leading |cd|
-setopt autocd
+function __misc_config() {
+    # spare leading |cd|
+    setopt autocd
 
-# send out beep/flashes at errors
-setopt beep
+    # send out beep/flashes at errors
+    setopt beep
+}
 
-# vim: filetype=zsh foldmethod=marker
+function main() {
+    __bind_vi
+    __history
+    __misc_config
+
+    unfunction __bind_vi __history __misc_config
+}
+main
+unfunction main
+
+# vim: filetype=zsh
