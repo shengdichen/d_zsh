@@ -11,6 +11,9 @@ function __prompt_config() {
     #
     #   %(<test>.<output_if_true>.<output_if_false>)
     #   %? -> exit code of previous command
+    #
+    # REF:
+    #   https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html
 
     PROMPT="%S%#%s "
 
