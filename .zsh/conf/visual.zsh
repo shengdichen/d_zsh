@@ -21,7 +21,13 @@ function __prompt_config() {
 
     PROMPT="%S%#%s "
 
-    RPROMPT="%(?..%K{red}%F{black}%?)%K{none}%F{none}"
+    RPROMPT="\
+%(?.
+.\
+%K{red}%F{black}%?\
+)\
+%K{none}%F{none}\
+"
 }
 
 function main() {
