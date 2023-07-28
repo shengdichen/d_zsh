@@ -1,43 +1,41 @@
-export EDITOR="nvim"
+function __set_basic() {
+    export EDITOR="nvim"
+}
 
-function set_path() {
-    LOCAL="${HOME}/.local"
+function __set_path() {
+    local LOCAL="${HOME}/.local"
 
-    LOCAL_BIN="${LOCAL}/bin"
+    local LOCAL_BIN="${LOCAL}/bin"
     export npm_config_prefix="${LOCAL}"  # ./bin auto-appended
 
     # remove duplications
     typeset -U path
     path=("${LOCAL_BIN}" ${path})
-
-    unset LOCAL LOCAL_BIN
 }
 
-function set_manpath() {
+function __set_manpath() {
     # use nvim with |Man| plugin as pager for man
     export MANPAGER="nvim +Man!"
 
-    LOCAL="${HOME}/.local"
-    LOCAL_MAN="${LOCAL}/share/man"
+    local LOCAL="${HOME}/.local"
+    local LOCAL_MAN="${LOCAL}/share/man"
     # safely append the man-path to npm's packages by preserving MANPATH if already
     # defined, otherwise by "sourcing" it with |$ manpath|
     export MANPATH="${MANPATH-$(manpath)}:${LOCAL_MAN}"
-
-    unset LOCAL LOCAL_MAN
 }
 
-function set_ime() {
+function __set_ime() {
     export GTK_IM_MODULE="fcitx"
     export QT_IM_MODULE="fcitx"
     export XMODIFIERS=@im="fcitx"
 }
 
-function set_gpg() {
+function __set_gpg() {
     # for shell invocation of gpg
     export GPG_TTY=$(tty)
 }
 
-function set_fzf() {
+function __set_fzf() {
     export FZF_COMPLETION_TRIGGER="jk"
 
     export FZF_COMPLETION_OPTS="\
@@ -48,12 +46,14 @@ function set_fzf() {
 }
 
 function main() {
-    set_path
-    set_manpath
-    set_ime
-    set_gpg
-    set_fzf
+    __set_basic
+    __set_path
+    __set_manpath
+    __set_ime
+    __set_gpg
+    __set_fzf
+
+    unfunction __set_basic __set_path __set_manpath __set_ime __set_gpg __set_fzf
 }
 main
-
-unfunction set_path set_manpath set_ime set_gpg set_fzf main
+unfunction main
