@@ -10,12 +10,15 @@ function __prompt_config() {
     #   %S/%s -> on/off standout-mode (inverse back-&foreground)
     #
     #   %(<test>.<output_if_true>.<output_if_false>)
+    #   %! -> current shell has elevated privilege
     #   %? -> exit code of previous command
     #
     # REF:
     #   https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html
 
-    PROMPT="%S%#%s "
+    PROMPT="\
+%S%(!.#.>)\
+%s "
 
     RPROMPT="\
 %(?..%K{red}%F{black}%?)\
