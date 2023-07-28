@@ -16,10 +16,12 @@ function __prompt_config() {
     # REF:
     #   https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html
 
+    # |#| if root, |>| otherwise
     PROMPT="\
 %S%(!.#.>)\
 %s "
 
+    # display error-code, if any, in highlight
     RPROMPT="\
 %(?..%K{red}%F{black}%?)\
 %k%f"
