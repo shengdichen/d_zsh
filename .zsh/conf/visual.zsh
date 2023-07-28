@@ -19,11 +19,7 @@ function __prompt_config() {
     # remember to always reset formatting before concluding the prompt; the
     # command input would otherwise bear the same formatting
 
-    if [ $SHLVL -gt 3 ]; then
-        PROMPT="%F{015}%#%F{none} "
-    else
-        PROMPT="%S%F{015}%#%s%F{none} "
-    fi
+    PROMPT="%S%#%s "
 
     RPROMPT="%(?..%S%F{009}%?)%s%F{none}"
 }
