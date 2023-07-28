@@ -4,28 +4,27 @@ function __cursor_config() {
 }
 
 function __prompt_config() {
-    # common elements:
-    #   %h OR %!
-    #       ->  current history event number, i.e., "line number"
-    #   %?
-    #       ->  exit code of previous command
-    #   %S/%s
-    #       ->  turn on/off standout
-    #   %F
-    #       ->  use custom format
-    #   %(?.<command_if_true>.<command_if_false>)
-
     # NOTE:
-    # remember to always reset formatting before concluding the prompt; the
-    # command input would otherwise bear the same formatting
+    #   %K/%k -> custom/default background
+    #   %F/%f -> custom/default foreground
+    #   %S/%s -> on/off standout-mode (inverse back-&foreground)
+    #
+    #   %(<test>.<output_if_true>.<output_if_false>)
+    #   %! -> current shell has elevated privilege
+    #   %? -> exit code of previous command
+    #
+    # REF:
+    #   https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html
 
-    if [ $SHLVL -gt 3 ]; then
-        PROMPT="%F{015}%#%F{none} "
-    else
-        PROMPT="%S%F{015}%#%s%F{none} "
-    fi
+    # |#| if root, |>| otherwise
+    PROMPT="\
+%S%(!.#.>)\
+%s "
 
-    RPROMPT="%(?..%S%F{009}%?)%s%F{none}"
+    # display error-code, if any, in highlight
+    RPROMPT="\
+%(?..%K{red}%F{black}%?)\
+%k%f"
 }
 
 function main() {
