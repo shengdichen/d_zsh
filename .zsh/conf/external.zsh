@@ -23,7 +23,7 @@ function __load_zsh_highlighter () {
 }
 
 function __set_gpg() {
-    # for shell invocation of gpg
+    # force tty-mode of gpg-agent
     export GPG_TTY=$(tty)
 }
 
