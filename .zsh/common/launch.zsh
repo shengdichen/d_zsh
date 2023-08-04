@@ -8,7 +8,6 @@ function __launch() {
 }
 
 function __tmux() {
-    # starting the tmux server
     alias tstart="\
         tmux\
         -2\
@@ -16,7 +15,6 @@ function __tmux() {
         start-server \; source-file \"\${HOME}/.tmux/startup/default.tmux\"\
     "
 
-    # shortcut for attaching a specific tmux session
     alias tatt="tmux -2 attach-session"
 }
 
@@ -33,7 +31,7 @@ function __firefox() {
 
 function __jetbrain() {
     function x_jetbr() {
-        # env-set'g necessary when invoked under sway
+        # needed if invoked under sway
         _JAVA_AWT_WM_NONREPARENTING=1\
         x_wl "$@"
     }

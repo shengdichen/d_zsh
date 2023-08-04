@@ -18,7 +18,7 @@ function __misc_config() {
     # spare leading |cd|
     setopt autocd
 
-    # send out beep/flashes at errors
+    # emit beep/flash on error
     setopt beep
 }
 
