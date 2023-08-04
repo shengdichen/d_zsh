@@ -22,11 +22,18 @@ function __load_zsh_highlighter () {
     [[ -e "${path_zsh_highlighter}" ]] && source "${path_zsh_highlighter}"
 }
 
+function __set_gpg() {
+    # force tty-mode of gpg-agent
+    export GPG_TTY=$(tty)
+}
+
+
 function main() {
     __fzf_config
     __load_zsh_highlighter
+    __set_gpg
 
-    unfunction __fzf_config __load_zsh_highlighter
+    unfunction __fzf_config __load_zsh_highlighter __set_gpg
 }
 main
 unfunction main
