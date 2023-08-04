@@ -14,7 +14,6 @@ function __set_path() {
 }
 
 function __set_manpager() {
-    # use nvim with |Man| plugin as pager for man
     export MANPAGER="nvim +Man!"
 }
 
