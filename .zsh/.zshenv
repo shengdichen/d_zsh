@@ -23,11 +23,6 @@ function __set_ime() {
     export XMODIFIERS=@im="fcitx"
 }
 
-function __set_gpg() {
-    # for shell invocation of gpg
-    export GPG_TTY=$(tty)
-}
-
 function __set_fzf() {
     export FZF_COMPLETION_TRIGGER="jk"
 
@@ -43,10 +38,9 @@ function main() {
     __set_path
     __set_manpager
     __set_ime
-    __set_gpg
     __set_fzf
 
-    unfunction __set_basic __set_path __set_manpager __set_ime __set_gpg __set_fzf
+    unfunction __set_basic __set_path __set_manpager __set_ime __set_fzf
 }
 main
 unfunction main
