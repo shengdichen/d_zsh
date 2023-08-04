@@ -9,7 +9,7 @@ function __set_path() {
     export npm_config_prefix="${LOCAL}"  # ./bin auto-appended
 
     # remove duplications
-    typeset -U path
+    typeset -g -U path  # -g for global-scope write
     path=("${LOCAL_BIN}" ${path})
 }
 
