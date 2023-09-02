@@ -18,7 +18,7 @@ function __tmux() {
     alias tatt="tmux -2 attach-session"
 }
 
-function __firefox() {
+function __browser() {
     alias x_fd_wl="\
         MOZ_ENABLE_WAYLAND=1\
         x_wl firefox-developer-edition -P\
@@ -26,6 +26,10 @@ function __firefox() {
     alias x_fd="\
         MOZ_ENABLE_WAYLAND=0\
         x firefox-developer-edition -P\
+    "
+    alias x_chrom_wl="\
+        x_wl chromium \
+        --ozone-platform-hint=auto --gtk-version=4\
     "
 }
 
@@ -66,11 +70,11 @@ function __misc() {
 function main() {
     __launch
     __tmux
-    __firefox
+    __browser
     __jetbrain
     __misc
 
-    unfunction __launch __tmux __firefox __jetbrain __misc
+    unfunction __launch __tmux __browser __jetbrain __misc
 }
 main
 unfunction main
