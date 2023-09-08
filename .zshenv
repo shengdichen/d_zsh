@@ -1,5 +1,5 @@
 # port to separate configuration directory
-ZDOTDIR=$HOME/.zsh
+ZDOTDIR=$HOME/.config/zsh
 
 # ...and source environments there
 source $ZDOTDIR/.zshenv
