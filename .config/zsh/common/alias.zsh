@@ -53,14 +53,14 @@ function __pass() {
 
         local pw_time=7
         if [[ $target == *.mfa ]]; then
-            PASSWORD_STORE_CLIP_TIME="${pw_time}" pass otp code -c "${@:2}" "${target}" 1>/dev/null
+            PASSWORD_STORE_CLIP_TIME="${pw_time}" pass otp code -c "${target}" 1>/dev/null
         else
             echo -n "(s)how or copy (default) "
             read -r mode
             if [[ "${mode}" == "s" ]]; then
-                pass show "${@:2}" "${target}"
+                pass show "${target}"
             else
-                PASSWORD_STORE_CLIP_TIME="${pw_time}" pass -c "${@:2}" "${target}" 1>/dev/null
+                PASSWORD_STORE_CLIP_TIME="${pw_time}" pass -c "${target}" 1>/dev/null
             fi
         fi
     }
