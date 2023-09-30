@@ -49,11 +49,15 @@ function __pass() {
     function fpass() {
         local pass_path="$HOME/.password-store/"
         local target
-        target=$(find -L "${pass_path}" -type f | fzf | sed "s/^.*\.password-store\/\(.*\).gpg$/\1/")
+        target=$(
+            find -L "${pass_path}" -type f | fzf | \
+            sed "s/^.*\.password-store\/\(.*\).gpg$/\1/" \
+        )
 
         local pw_time=7
         if [[ $target == *.mfa ]]; then
-            PASSWORD_STORE_CLIP_TIME="${pw_time}" pass otp code -c "${target}" 1>/dev/null
+            PASSWORD_STORE_CLIP_TIME="${pw_time}" \
+                pass otp code -c "${target}" 1>/dev/null
         else
             echo -n "(s)how, (e)dit, copy (default)? "
             read -r mode
@@ -62,7 +66,8 @@ function __pass() {
             elif [[ "${mode}" == "e" ]]; then
                 pass edit "${target}" 2>/dev/null
             else
-                PASSWORD_STORE_CLIP_TIME="${pw_time}" pass -c "${target}" 1>/dev/null
+                PASSWORD_STORE_CLIP_TIME="${pw_time}" \
+                    pass -c "${target}" 1>/dev/null
             fi
         fi
     }
