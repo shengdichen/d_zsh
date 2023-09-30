@@ -51,12 +51,26 @@ function __pass() {
         local target
         target=$(find -L "${pass_path}" -type f | fzf | sed "s/^.*\.password-store\/\(.*\).gpg$/\1/")
 
+        local is_otp=false
+        if [[ $target == *.mfa ]]; then
+            is_otp=true
+        fi
+
         case $1 in
             "s")
-                pass show ${@:2} "${target}"
+                if $is_otp; then
+                    pass otp code "${@:2}" "${target}"
+                else
+                    pass show "${@:2}" "${target}"
+                fi
                 ;;
             *)
-                PASSWORD_STORE_CLIP_TIME=7 pass -c ${@:2} "${target}" 1>/dev/null
+                local pw_time=7
+                if $is_otp; then
+                    PASSWORD_STORE_CLIP_TIME="${pw_time}" pass otp code -c "${@:2}" "${target}" 1>/dev/null
+                else
+                    PASSWORD_STORE_CLIP_TIME="${pw_time}" pass -c "${@:2}" "${target}" 1>/dev/null
+                fi
                 ;;
         esac
     }
