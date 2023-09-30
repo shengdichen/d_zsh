@@ -58,7 +58,7 @@ function __pass() {
             echo -n "(s)how or copy (default) "
             read -r mode
             if [[ "${mode}" == "s" ]]; then
-                pass show "${target}"
+                pass show "${target}" | "$EDITOR" -R
             else
                 PASSWORD_STORE_CLIP_TIME="${pw_time}" pass -c "${target}" 1>/dev/null
             fi
