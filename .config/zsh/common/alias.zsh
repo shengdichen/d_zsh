@@ -50,7 +50,7 @@ function __pass() {
         local pass_path="$HOME/.password-store/"
         local target
         target=$(
-            find -L "${pass_path}" -type f | fzf | \
+            find -L "${pass_path}" -type f | grep -e "\.gpg$" | fzf | \
             sed "s/^.*\.password-store\/\(.*\).gpg$/\1/" \
         )
 
