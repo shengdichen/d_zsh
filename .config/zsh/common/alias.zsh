@@ -36,12 +36,22 @@ function __ag_to_fzf_to_editor() {
     "
 }
 
+function __mail() {
+    local conf_dir="${HOME}/.config/"
+
+    alias fdm_c="fdm -f \"${conf_dir}/fdm/config\""
+
+    alias mbsync_c="mbsync -c \"${conf_dir}/mbsync/config\""
+    alias mbsync_all="mbsync_c ALL"
+}
+
 function main() {
     __alias_common
     __alias_man
     __ag_to_fzf_to_editor
+    __mail
 
-    unfunction __alias_common __alias_man __ag_to_fzf_to_editor
+    unfunction __alias_common __alias_man __ag_to_fzf_to_editor __mail
 }
 main
 unfunction main
