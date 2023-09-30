@@ -45,13 +45,31 @@ function __mail() {
     alias mbsync_all="mbsync_c ALL"
 }
 
+function __pass() {
+    function fpass() {
+        local pass_path="$HOME/.password-store/"
+        local target
+        target=$(find -L "${pass_path}" -type f | fzf | sed "s/^.*\.password-store\/\(.*\).gpg$/\1/")
+
+        case $1 in
+            "s")
+                pass show ${@:2} "${target}"
+                ;;
+            *)
+                PASSWORD_STORE_CLIP_TIME=7 pass -c ${@:2} "${target}" 1>/dev/null
+                ;;
+        esac
+    }
+}
+
 function main() {
     __alias_common
     __alias_man
     __ag_to_fzf_to_editor
     __mail
+    __pass
 
-    unfunction __alias_common __alias_man __ag_to_fzf_to_editor __mail
+    unfunction __alias_common __alias_man __ag_to_fzf_to_editor __mail __pass
 }
 main
 unfunction main
