@@ -25,7 +25,6 @@ function __menu_like() {
     bindkey -M menuselect "/" history-incremental-search-forward
     bindkey -M menuselect "?" history-incremental-search-backward
 
-    bindkey -M menuselect '\r' accept-line
     bindkey -M menuselect "t" accept-and-hold   # select multiple
 
     bindkey -M menuselect "u" undo
