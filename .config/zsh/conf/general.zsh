@@ -6,7 +6,7 @@ function __bind_vi() {
 }
 
 function __history() {
-    HISTFILE=$ZDOTDIR/.histfile
+    HISTFILE="${ZDOTDIR}/.histfile"
     HISTSIZE=1000
     SAVEHIST=1000
 
