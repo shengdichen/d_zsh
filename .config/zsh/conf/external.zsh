@@ -11,10 +11,10 @@ function __fzf_config() {
 }
 
 function __load_zsh_highlighter () {
-    local path_zsh_highlighter=\
+    local target=\
 /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-    [[ -e "${path_zsh_highlighter}" ]] && source "${path_zsh_highlighter}"
+    [[ -e "${target}" ]] && source "${target}"
 }
 
 function __set_gpg() {
