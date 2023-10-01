@@ -2,6 +2,8 @@ function __fzf_config() {
     source /usr/share/fzf/key-bindings.zsh
     source /usr/share/fzf/completion.zsh
 
+    # NOTE:
+    #   1. first unbind default M-c for cd'ing
     bindkey -M vicmd -r "\ec"
     bindkey -M viins -r "\ec"
     bindkey -M vicmd "^Y" fzf-cd-widget
