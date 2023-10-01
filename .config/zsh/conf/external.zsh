@@ -4,8 +4,8 @@ function __fzf_config() {
 
     bindkey -M vicmd -r "\ec"
     bindkey -M viins -r "\ec"
-    bindkey -M vicmd '^Y' fzf-cd-widget
-    bindkey -M viins '^Y' fzf-cd-widget
+    bindkey -M vicmd "^Y" fzf-cd-widget
+    bindkey -M viins "^Y" fzf-cd-widget
 }
 
 function __load_zsh_highlighter () {

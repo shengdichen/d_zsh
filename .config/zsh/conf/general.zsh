@@ -2,7 +2,7 @@ function __bind_vi() {
     # use vicmd & viins
     bindkey -v
 
-    bindkey -M viins 'JJ' vi-cmd-mode
+    bindkey -M viins "JJ" vi-cmd-mode
 }
 
 function __history() {
