@@ -1,5 +1,5 @@
 function __source_recursive() {
-    for f in "${ZDOTDIR}"/"$1"/**/*.zsh; do
+    for f in "${ZDOTDIR}"/"$1"/**/*."zsh"; do
         source "${f}"
     done
 }

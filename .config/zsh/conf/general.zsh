@@ -2,11 +2,11 @@ function __bind_vi() {
     # use vicmd & viins
     bindkey -v
 
-    bindkey -M viins 'JJ' vi-cmd-mode
+    bindkey -M viins "JJ" vi-cmd-mode
 }
 
 function __history() {
-    HISTFILE=$ZDOTDIR/.histfile
+    HISTFILE="${ZDOTDIR}/.histfile"
     HISTSIZE=1000
     SAVEHIST=1000
 

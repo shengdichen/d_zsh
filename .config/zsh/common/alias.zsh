@@ -24,7 +24,7 @@ function __alias_man() {
 function __ag_to_fzf_to_editor() {
     alias afe="\
         ag \
-            --line-numbers --noheading --nobreak \
+            --line-numbers --noheading \
             --hidden \
             . \
         | \

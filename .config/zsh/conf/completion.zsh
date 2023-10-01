@@ -11,24 +11,23 @@ function __menu_like() {
     zstyle ':completion:*' menu select
 
     zmodload zsh/complist
-    bindkey -M menuselect 'g' beginning-of-history
-    bindkey -M menuselect 'G' end-of-history
+    bindkey -M menuselect "g" beginning-of-history
+    bindkey -M menuselect "G" end-of-history
 
-    bindkey -M menuselect '0' beginning-of-line
+    bindkey -M menuselect "0" beginning-of-line
     bindkey -M menuselect '$' end-of-line
 
-    bindkey -M menuselect 'h' backward-char
-    bindkey -M menuselect 'j' down-line-or-search
-    bindkey -M menuselect 'k' up-line-or-search
-    bindkey -M menuselect 'l' forward-char
+    bindkey -M menuselect "h" backward-char
+    bindkey -M menuselect "j" down-line-or-search
+    bindkey -M menuselect "k" up-line-or-search
+    bindkey -M menuselect "l" forward-char
 
-    bindkey -M menuselect '/' history-incremental-search-forward
-    bindkey -M menuselect '?' history-incremental-search-backward
+    bindkey -M menuselect "/" history-incremental-search-forward
+    bindkey -M menuselect "?" history-incremental-search-backward
 
-    bindkey -M menuselect '\r' accept-line
-    bindkey -M menuselect 't' accept-and-hold   # select multiple
+    bindkey -M menuselect "t" accept-and-hold   # select multiple
 
-    bindkey -M menuselect 'u' undo
+    bindkey -M menuselect "u" undo
 }
 
 function __complete_pip() {
