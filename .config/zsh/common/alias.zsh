@@ -36,12 +36,51 @@ function __ag_to_fzf_to_editor() {
     "
 }
 
+function __mail() {
+    local conf_dir="${HOME}/.config/"
+
+    alias fdm_c="fdm -f \"${conf_dir}/fdm/config\""
+
+    alias mbsync_c="mbsync -c \"${conf_dir}/mbsync/config\""
+    alias mbsync_all="mbsync_c ALL"
+}
+
+function __pass() {
+    function fpass() {
+        local pass_dir="password-store"  # intentionally without leading dot
+        local target
+        target=$(
+            find -L "${HOME}/.${pass_dir}/" -type f | grep -e "\.gpg$" | fzf | \
+            sed "s/^.*\.${pass_dir}\/\(.*\).gpg$/\1/" \
+        )
+
+        local pw_time=7
+        if [[ "${target}" == *.mfa ]]; then
+            PASSWORD_STORE_CLIP_TIME="${pw_time}" \
+                pass otp code -c "${target}" 1>/dev/null
+        else
+            echo -n "(s)how, (e)dit, copy (default)? "
+            read -r mode
+            if [[ "${mode}" == "s" ]]; then
+                pass show "${target}" | "${EDITOR}" -R
+            elif [[ "${mode}" == "e" ]]; then
+                pass edit "${target}" 2>/dev/null
+            else
+                PASSWORD_STORE_CLIP_TIME="${pw_time}" \
+                    pass -c "${target}" 1>/dev/null
+            fi
+        fi
+    }
+}
+
 function main() {
     __alias_common
     __alias_man
     __ag_to_fzf_to_editor
+    __mail
+    __pass
 
-    unfunction __alias_common __alias_man __ag_to_fzf_to_editor
+    unfunction __alias_common __alias_man __ag_to_fzf_to_editor __mail __pass
 }
 main
 unfunction main
