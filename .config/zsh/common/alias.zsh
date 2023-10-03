@@ -74,14 +74,21 @@ function __pass() {
     }
 }
 
+function __network() {
+    alias ip_public="curl ifconfig.me"
+
+    alias pingme="ping shengdichen.xyz"
+}
+
 function main() {
     __alias_common
     __alias_man
     __ag_to_fzf_to_editor
     __mail
     __pass
+    __network
 
-    unfunction __alias_common __alias_man __ag_to_fzf_to_editor __mail __pass
+    unfunction __alias_common __alias_man __ag_to_fzf_to_editor __mail __pass __network
 }
 main
 unfunction main
