@@ -6,6 +6,7 @@ function __alias_common() {
 
     # NOTE: unlike bash, NO extra setup necessary for auto-completion
     alias g="git"
+    alias gg="lua ${HOME}/.config/git/script/commit.lua"
 
     alias m="make"
 }
