@@ -1,5 +1,6 @@
 function __alias_common() {
-    alias c="clear"
+    # restore cursor-shape with nvim
+    alias c="${EDITOR} -c q && clear"
     alias q="exit"
 
     alias fh="free -h"
