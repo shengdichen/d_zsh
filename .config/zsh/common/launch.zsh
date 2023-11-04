@@ -49,6 +49,31 @@ function __jetbrain() {
     "
 }
 
+function __mpd() {
+    alias mpc_admin="mpc --host=admin@localhost"
+    alias mpc_user="mpc --host=user@localhost"
+
+    function ncmpc_auto() {
+        function __op() {
+            mpc --host=user@localhost "${@}" >/dev/null
+        }
+
+        if ! pgrep mpd >/dev/null 2>&1; then
+            mpd
+            for cmd in "repeat" "single"; do
+                __op "${cmd}"
+            done
+            # must surround volume-setting with play-toggling to take effect
+            __op play
+            __op volume 37
+            __op pause
+        fi
+        ncmpc
+
+        unfunction __op
+    }
+}
+
 function __misc() {
     # append value for screen color-temp (typically 3700)
     alias x_gamma="x_wl gammastep -O"
@@ -73,9 +98,10 @@ function main() {
     __tmux
     __browser
     __jetbrain
+    __mpd
     __misc
 
-    unfunction __launch __tmux __browser __jetbrain __misc
+    unfunction __launch __tmux __browser __jetbrain __mpd __misc
 }
 main
 unfunction main
