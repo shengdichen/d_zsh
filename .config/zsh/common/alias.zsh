@@ -10,6 +10,8 @@ function __alias_common() {
     alias gg="lua ${HOME}/.config/git/script/commit.lua"
 
     alias m="make"
+
+    alias swayug="sway --unsupported-gpu"
 }
 
 function __alias_man() {
