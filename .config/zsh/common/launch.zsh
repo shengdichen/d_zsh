@@ -17,6 +17,9 @@ function __tmux() {
 }
 
 function __browser() {
+    alias x_qb_wl="\
+        x_wl qutebrowser --restore def\
+    "
     alias x_fd_wl="\
         MOZ_ENABLE_WAYLAND=1\
         x_wl firefox-developer-edition -P\

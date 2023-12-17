@@ -1,11 +1,13 @@
 function __alias_common() {
-    alias c="clear"
+    # restore cursor-shape with nvim
+    alias c="${EDITOR} -c q && clear"
     alias q="exit"
 
     alias fh="free -h"
 
     # NOTE: unlike bash, NO extra setup necessary for auto-completion
     alias g="git"
+    alias gg="lua ${HOME}/.config/git/script/commit.lua"
 
     alias m="make"
 }
@@ -73,14 +75,21 @@ function __pass() {
     }
 }
 
+function __network() {
+    alias ip_public="curl ifconfig.me"
+
+    alias pingme="ping shengdichen.xyz"
+}
+
 function main() {
     __alias_common
     __alias_man
     __ag_to_fzf_to_editor
     __mail
     __pass
+    __network
 
-    unfunction __alias_common __alias_man __ag_to_fzf_to_editor __mail __pass
+    unfunction __alias_common __alias_man __ag_to_fzf_to_editor __mail __pass __network
 }
 main
 unfunction main
