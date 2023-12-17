@@ -47,6 +47,8 @@ function __mail() {
 
     alias mbsync_c="mbsync -c \"${conf_dir}/mbsync/config\""
     alias mbsync_all="mbsync_c ALL"
+
+    alias prontonbridge="x_wl protonmail-bridge-core -n"
 }
 
 function __pass() {
