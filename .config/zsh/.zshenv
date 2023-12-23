@@ -18,6 +18,8 @@ function __set_manpager() {
 }
 
 function __set_ime() {
+    # REF:
+    #   https://wiki.archlinux.org/title/Fcitx5#Integration
     export GTK_IM_MODULE="fcitx"
     export QT_IM_MODULE="fcitx"
     export XMODIFIERS=@im="fcitx"
