@@ -53,8 +53,8 @@ function __pass() {
         local target
         target=$(
             find -L "${HOME}/.${pass_dir}/" -type f | grep -e "\.gpg$" | fzf | \
-            sed "s/^.*\.${pass_dir}\/\(.*\).gpg$/\1/" \
-        )
+                sed "s/^.*\.${pass_dir}\/\(.*\).gpg$/\1/" \
+            )
 
         local pw_time=7
         if [[ "${target}" == *.mfa ]]; then

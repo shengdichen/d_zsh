@@ -37,8 +37,7 @@ function __browser() {
 function __jetbrain() {
     function x_jetbr() {
         # needed if invoked under sway
-        _JAVA_AWT_WM_NONREPARENTING=1\
-        x_wl "$@"
+        _JAVA_AWT_WM_NONREPARENTING=1 x_wl "$@"
     }
 
     alias x_pcm="\
