@@ -11,8 +11,9 @@ function __fzf_config() {
 }
 
 function __load_zsh_highlighter () {
-    local target=\
-/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    local target="\
+/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh\
+"
 
     [[ -e "${target}" ]] && source "${target}"
 }

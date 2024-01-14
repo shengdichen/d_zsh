@@ -10,6 +10,8 @@ function __alias_common() {
     alias gg="lua ${HOME}/.config/git/script/commit.lua"
 
     alias m="make"
+
+    alias swayug="sway --unsupported-gpu"
 }
 
 function __alias_man() {
@@ -45,6 +47,8 @@ function __mail() {
 
     alias mbsync_c="mbsync -c \"${conf_dir}/mbsync/config\""
     alias mbsync_all="mbsync_c ALL"
+
+    alias prontonbridge="x_wl protonmail-bridge-core -n"
 }
 
 function __pass() {
@@ -53,8 +57,8 @@ function __pass() {
         local target
         target=$(
             find -L "${HOME}/.${pass_dir}/" -type f | grep -e "\.gpg$" | fzf | \
-            sed "s/^.*\.${pass_dir}\/\(.*\).gpg$/\1/" \
-        )
+                sed "s/^.*\.${pass_dir}\/\(.*\).gpg$/\1/" \
+            )
 
         local pw_time=7
         if [[ "${target}" == *.mfa ]]; then
