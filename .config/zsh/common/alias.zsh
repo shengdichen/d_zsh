@@ -79,6 +79,12 @@ function __pass() {
     }
 }
 
+__cd_vifm() {
+    cd_vifm () {
+        cd "$(vifm --choose-dir -)"
+    }
+}
+
 function __network() {
     alias ip_public="curl ifconfig.me"
 
@@ -89,11 +95,12 @@ function main() {
     __alias_common
     __alias_man
     __ag_to_fzf_to_editor
+    __cd_vifm
     __mail
     __pass
     __network
 
-    unfunction __alias_common __alias_man __ag_to_fzf_to_editor __mail __pass __network
+    unfunction __alias_common __alias_man __ag_to_fzf_to_editor __cd_vifm __mail __pass __network
 }
 main
 unfunction main
