@@ -85,6 +85,18 @@ __cd_vifm() {
     }
 }
 
+__update_wayland_display() {
+    __get() {
+        local _str="WAYLAND_DISPLAY="
+        systemctl --user show-environment | grep "${_str}" | sed "s/${_str}//"
+    }
+
+    printf "wayland-display> before: [%s]\n" "$(__get)"
+    systemctl --user import-environment WAYLAND_DISPLAY
+    printf "wayland-display> after: [%s]\n" "$(__get)"
+    unset -f __get
+}
+
 function __network() {
     alias ip_public="curl ifconfig.me"
 
