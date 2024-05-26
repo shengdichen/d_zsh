@@ -1,6 +1,9 @@
 function __launch() {
     function x_wl() {
         nohup "$@" 1>/dev/null 2>&1 &
+        # REF:
+        #   https://stackoverflow.com/questions/19302913/exit-zsh-but-leave-running-jobs-open
+        disown
     }
     function x() {
         WAYLAND_DISPLAY="" x_wl "$@"
