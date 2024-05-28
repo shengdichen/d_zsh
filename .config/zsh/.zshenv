@@ -37,6 +37,7 @@ function __set_fzf() {
 
 function __set_theming() {
     export QT_QPA_PLATFORMTHEME=qt5ct:qt6ct
+    export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=7,underline"
 }
 
 function main() {
