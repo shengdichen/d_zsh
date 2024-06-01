@@ -48,35 +48,11 @@ function __mail() {
     alias mbsync_c="mbsync -c \"${conf_dir}/mbsync/config\""
     alias mbsync_all="mbsync_c ALL"
 
-    alias prontonbridge="x_wl protonmail-bridge-core -n"
+    alias prontonbridge="__x protonmail-bridge-core -n"
 }
 
 function __pass() {
-    function fpass() {
-        local pass_dir="password-store"  # intentionally without leading dot
-        local target
-        target=$(
-            find -L "${HOME}/.${pass_dir}/" -type f | grep -e "\.gpg$" | fzf | \
-                sed "s/^.*\.${pass_dir}\/\(.*\).gpg$/\1/" \
-            )
-
-        local pw_time=7
-        if [[ "${target}" == *.mfa ]]; then
-            PASSWORD_STORE_CLIP_TIME="${pw_time}" \
-                pass otp code -c "${target}" 1>/dev/null
-        else
-            echo -n "(s)how, (e)dit, copy (default)? "
-            read -r mode
-            if [[ "${mode}" == "s" ]]; then
-                pass show "${target}" | "${EDITOR}" -R
-            elif [[ "${mode}" == "e" ]]; then
-                pass edit "${target}" 2>/dev/null
-            else
-                PASSWORD_STORE_CLIP_TIME="${pw_time}" \
-                    pass -c "${target}" 1>/dev/null
-            fi
-        fi
-    }
+    source "${HOME}/.local/script/fpass.sh"
 }
 
 __cd_vifm() {

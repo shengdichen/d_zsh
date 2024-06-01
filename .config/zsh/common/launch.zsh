@@ -1,47 +1,22 @@
 function __launch() {
-    function x_wl() {
-        nohup "$@" 1>/dev/null 2>&1 &
-        # REF:
-        #   https://stackoverflow.com/questions/19302913/exit-zsh-but-leave-running-jobs-open
+    # REF:
+    #   https://stackoverflow.com/questions/19302913/exit-zsh-but-leave-running-jobs-open
+
+    function __x() {
+        nohup "${@}" >/dev/null 2>&1 &
         disown
     }
-    function x() {
-        WAYLAND_DISPLAY="" x_wl "$@"
+    function __x_11() {
+        WAYLAND_DISPLAY="" nohup "${@}" >/dev/null 2>&1 &
+        disown
     }
-}
-
-function __tmux() {
-    alias tstart="\
-        tmux -2 \
-        start-server \; source-file \"\${HOME}/.config/tmux/script/launch.tmux\"\
-    "
-
-    alias tatt="tmux -2 attach-session"
-}
-
-function __browser() {
-    alias x_qb_wl="\
-        x_wl qutebrowser --restore def\
-    "
-    alias x_fd_wl="\
-        MOZ_ENABLE_WAYLAND=1\
-        x_wl firefox-developer-edition -P\
-    "
-    alias x_fd="\
-        MOZ_ENABLE_WAYLAND=0\
-        x firefox-developer-edition -P\
-    "
-    alias x_chrom_wl="\
-        x_wl chromium \
-        --ozone-platform-hint=auto --gtk-version=4\
-    "
 }
 
 function __jetbrain() {
     function x_jetbr() {
         # REF:
         #   https://wiki.archlinux.org/title/Sway#Java_applications
-        _JAVA_AWT_WM_NONREPARENTING=1 x_wl "$@"
+        _JAVA_AWT_WM_NONREPARENTING=1 __x "$@"
     }
 
     alias x_pcm="\
@@ -79,15 +54,15 @@ function __mpd() {
 
 function __misc() {
     # append value for screen color-temp (typically 3700)
-    alias x_gamma="x_wl gammastep -O"
+    alias x_gamma="__x gammastep -O"
 
     alias x_lyx="\
         QT_PLUGIN_PATH=/usr/lib/qt/plugins\
-        x lyx\
+        __x_11 lyx\
     "
 
     # launch as daemon
-    alias x_fctx="x_wl fcitx5 -d"
+    alias x_fctx="__x fcitx5 -d"
 
     # for op'ns requiring keyring, e.g., lock & install
     alias poetry_nokeyring="\
@@ -98,13 +73,11 @@ function __misc() {
 
 function main() {
     __launch
-    __tmux
-    __browser
     __jetbrain
     __mpd
     __misc
 
-    unfunction __launch __tmux __browser __jetbrain __mpd __misc
+    unfunction __launch __jetbrain __mpd __misc
 }
 main
 unfunction main
