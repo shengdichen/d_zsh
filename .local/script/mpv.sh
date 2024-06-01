@@ -9,7 +9,8 @@ __mpv_paste() {
     local _path _input
     while true; do
         _path="$(wl-paste)"
-        printf "mpv-paste> [%s], go ahead? [y]es (default), [n]o " "${_path}"
+        printf "mpv-paste> \"%s\"  [%s]\n" "$(yt-dlp --get-title "${_path}")" "${_path}"
+        printf "mpv-paste> go ahead? [y]es (default), [n]o "
         read -r _input
         case "${_input}" in
             "n" | "N")
