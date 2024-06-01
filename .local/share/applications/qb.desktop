@@ -1,0 +1,20 @@
+[Desktop Entry]
+Type=Application
+Name=__qb
+Icon=qutebrowser
+
+Exec=qutebrowser --restore def
+Terminal=false
+
+Categories=Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/qute;
+
+Actions=new;preferences;
+
+[Desktop Action new]
+Name=New
+Exec=qutebrowser
+
+[Desktop Action preferences]
+Name=Preferences
+Exec=qutebrowser "qute://settings"
