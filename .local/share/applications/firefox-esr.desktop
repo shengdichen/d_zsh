@@ -1,0 +1,24 @@
+[Desktop Entry]
+Type=Application
+Name=__firefox/esr
+Icon=firefox-esr
+
+Exec=firefox-esr --ProfileManager
+Terminal=false
+
+Categories=Application;Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;
+
+Actions=new;new-normal;new-private;profile-manager;
+
+[Desktop Action new]
+Name=new
+Exec=firefox-esr %u
+
+[Desktop Action new-normal]
+Name=new/normal
+Exec=firefox-esr --new-window %u
+
+[Desktop Action new-private]
+Name=new/private
+Exec=firefox-esr --private-window %u
