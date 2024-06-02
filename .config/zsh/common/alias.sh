@@ -9,7 +9,7 @@ __base() {
     }
 
     cd_vifm() {
-        cd "$(vifm --choose-dir -)"
+        cd "$(vifm --choose-dir -)" || exit 3
     }
 }
 
@@ -18,11 +18,15 @@ __dev() {
 
     # NOTE: unlike bash, NO extra setup necessary for auto-completion
     alias g="git"
-    alias gg="lua ${HOME}/.config/git/script/commit.lua"
+    gg() {
+        lua "${HOME}/.config/git/script/commit.lua" "${@}"
+    }
 
     alias m="make"
 
-    alias afe="${HOME}/.local/script/fzf.sh"
+    afe() {
+        "${HOME}/.local/script/fzf.sh" "${@}"
+    }
 }
 
 __man() {
@@ -37,12 +41,16 @@ __man() {
 }
 
 __mail() {
-    local conf_dir="${HOME}/.config/"
+    fdm_c() {
+        fdm -f "${HOME}/.config/fdm/config" "${@}"
+    }
 
-    alias fdm_c="fdm -f \"${conf_dir}/fdm/config\""
-
-    alias mbsync_c="mbsync -c \"${conf_dir}/mbsync/config\""
-    alias mbsync_all="mbsync_c ALL"
+    mbsync_c() {
+        mbsync -c "${HOME}/.config/mbsync/config" "${@}"
+    }
+    mbsync_all() {
+        mbsync_c "ALL"
+    }
 
     alias protonbridge="__x protonmail-bridge-core -n"
 }
