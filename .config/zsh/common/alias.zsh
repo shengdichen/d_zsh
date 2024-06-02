@@ -26,18 +26,7 @@ function __alias_man() {
 }
 
 function __ag_to_fzf_to_editor() {
-    alias afe="\
-        ag \
-            --line-numbers --noheading \
-            --hidden \
-            . \
-        | \
-        fzf \
-        | \
-        awk \
-            -F : \
-            '{cmd=\"\$EDITOR +\"\$2\" -- \"\$1; system(cmd)}' \
-    "
+    alias afe="${HOME}/.local/script/fzf.sh"
 }
 
 function __mail() {
