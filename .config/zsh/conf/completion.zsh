@@ -1,8 +1,9 @@
 function __basic() {
-    autoload -Uz compinit; compinit
+    autoload -Uz compinit
+    compinit
 
     setopt extendedglob
-    setopt globdots  # also match dot-files
+    setopt globdots # also match dot-files
     setopt nomatch
 }
 
@@ -25,7 +26,7 @@ function __menu_like() {
     bindkey -M menuselect "/" history-incremental-search-forward
     bindkey -M menuselect "?" history-incremental-search-backward
 
-    bindkey -M menuselect "t" accept-and-hold   # select multiple
+    bindkey -M menuselect "t" accept-and-hold # select multiple
 
     bindkey -M menuselect "u" undo
 }

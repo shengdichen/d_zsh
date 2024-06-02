@@ -21,6 +21,9 @@ function __plugins() {
 }
 
 function __set_gpg() {
+    # REF:
+    #   https://wiki.archlinux.org/title/GnuPG#Configure_pinentry_to_use_the_correct_TTY
+
     # force tty-mode of gpg-agent
     export GPG_TTY=$(tty)
 }
