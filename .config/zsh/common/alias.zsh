@@ -1,8 +1,19 @@
-function __alias_common() {
-    # restore cursor-shape with nvim
-    alias c="${EDITOR} -c q && clear"
+__base() {
+    c() {
+        clear && printf "\e[6 q"
+    }
     alias q="exit"
 
+    tatt() {
+        "${HOME}/.local/script/tmux.sh" run
+    }
+
+    cd_vifm() {
+        cd "$(vifm --choose-dir -)"
+    }
+}
+
+__dev() {
     alias fh="free -h"
 
     # NOTE: unlike bash, NO extra setup necessary for auto-completion
@@ -11,10 +22,10 @@ function __alias_common() {
 
     alias m="make"
 
-    alias swayug="sway --unsupported-gpu"
+    alias afe="${HOME}/.local/script/fzf.sh"
 }
 
-function __alias_man() {
+__man() {
     alias man_fr="man -L fr_FR.UTF-8"
     alias man_ru="man -L ru_RU.UTF-8"
     alias man_de="man -L de_DE.UTF-8"
@@ -25,11 +36,7 @@ function __alias_man() {
     alias man_zh="man -L zh_TW.UTF-8"
 }
 
-function __ag_to_fzf_to_editor() {
-    alias afe="${HOME}/.local/script/fzf.sh"
-}
-
-function __mail() {
+__mail() {
     local conf_dir="${HOME}/.config/"
 
     alias fdm_c="fdm -f \"${conf_dir}/fdm/config\""
@@ -37,47 +44,44 @@ function __mail() {
     alias mbsync_c="mbsync -c \"${conf_dir}/mbsync/config\""
     alias mbsync_all="mbsync_c ALL"
 
-    alias prontonbridge="__x protonmail-bridge-core -n"
+    alias protonbridge="__x protonmail-bridge-core -n"
 }
 
-function __pass() {
-    source "${HOME}/.local/script/fpass.sh"
-}
-
-__cd_vifm() {
-    cd_vifm () {
-        cd "$(vifm --choose-dir -)"
-    }
-}
-
-__update_wayland_display() {
-    __get() {
-        local _str="WAYLAND_DISPLAY="
-        systemctl --user show-environment | grep "${_str}" | sed "s/${_str}//"
-    }
-
-    printf "wayland-display> before: [%s]\n" "$(__get)"
-    systemctl --user import-environment WAYLAND_DISPLAY
-    printf "wayland-display> after: [%s]\n" "$(__get)"
-    unset -f __get
-}
-
-function __network() {
+__network() {
     alias ip_public="curl ifconfig.me"
 
     alias pingme="ping shengdichen.xyz"
 }
 
-function main() {
-    __alias_common
-    __alias_man
-    __ag_to_fzf_to_editor
-    __cd_vifm
-    __mail
-    __pass
-    __network
+__misc() {
+    alias swayug="sway --unsupported-gpu"
 
-    unfunction __alias_common __alias_man __ag_to_fzf_to_editor __cd_vifm __mail __pass __network
+    fpass() {
+        "${HOME}/.local/script/fpass.sh" run
+    }
+
+    __update_wayland_display() {
+        __get() {
+            local _str="WAYLAND_DISPLAY="
+            systemctl --user show-environment | grep "${_str}" | sed "s/${_str}//"
+        }
+
+        printf "wayland-display> before: [%s]\n" "$(__get)"
+        systemctl --user import-environment WAYLAND_DISPLAY
+        printf "wayland-display> after: [%s]\n" "$(__get)"
+        unset -f __get
+    }
+}
+
+main() {
+    __base
+    __dev
+    __man
+    __mail
+    __network
+    __misc
+
+    unset -f __base __dev __man __mail __network __misc
 }
 main
-unfunction main
+unset -f main
