@@ -1,38 +1,38 @@
-function __launch() {
+__launch() {
     # REF:
     #   https://stackoverflow.com/questions/19302913/exit-zsh-but-leave-running-jobs-open
 
-    function __x() {
+    __x() {
         nohup "${@}" >/dev/null 2>&1 &
         disown
     }
-    function __x_11() {
+    __x_11() {
         WAYLAND_DISPLAY="" nohup "${@}" >/dev/null 2>&1 &
         disown
     }
 }
 
-function __jetbrain() {
-    function x_jetbr() {
+__jetbrain() {
+    x_jetbr() {
         # REF:
         #   https://wiki.archlinux.org/title/Sway#Java_applications
-        _JAVA_AWT_WM_NONREPARENTING=1 __x "$@"
+        _JAVA_AWT_WM_NONREPARENTING=1 __x "${@}"
     }
 
-    alias x_pcm="\
-        x_jetbr pycharm\
-    "
-    alias x_itj="\
-        x_jetbr idea\
-    "
+    x_pcm() {
+        x_jetbr pycharm "${@}"
+    }
+    x_itj() {
+        x_jetbr idea "${@}"
+    }
 }
 
-function __mpd() {
+__mpd() {
     alias mpc_admin="mpc --host=admin@localhost"
     alias mpc_user="mpc --host=user@localhost"
 
-    function ncmpc_auto() {
-        function __op() {
+    ncmpc_auto() {
+        __op() {
             mpc --host=user@localhost "${@}" >/dev/null
         }
 
@@ -48,11 +48,11 @@ function __mpd() {
         fi
         ncmpc
 
-        unfunction __op
+        unset -f __op
     }
 }
 
-function __misc() {
+__misc() {
     # append value for screen color-temp (typically 3700)
     alias x_gamma="__x gammastep -O"
 
@@ -71,13 +71,13 @@ function __misc() {
     "
 }
 
-function main() {
+main() {
     __launch
     __jetbrain
     __mpd
     __misc
 
-    unfunction __launch __jetbrain __mpd __misc
+    unset -f __launch __jetbrain __mpd __misc
 }
 main
-unfunction main
+unset -f main
