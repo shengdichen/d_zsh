@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=__firefox/esr_default
+Icon=firefox-esr
+
+Exec=firefox-esr --private-window %u
