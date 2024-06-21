@@ -1,0 +1,15 @@
+# REF:
+#   /usr/share/applications/mimeinfo.cache
+# NOTE:
+#   1. query with
+#   $ xdg-mime query default <MIME_type>
+#   2. open with
+#   $ xdg-open <file>
+
+[Default Applications]
+inode/directory=pcmanfm.desktop
+application/pdf=org.pwmt.zathura-pdf-mupdf.desktop
+
+text/html=__firefox_esr_default.desktop;__firefox_dev_default.desktop
+x-scheme-handler/http=__firefox_esr_default.desktop;__firefox_dev_default.desktop
+x-scheme-handler/https=__firefox_esr_default.desktop;__firefox_dev_default.desktop

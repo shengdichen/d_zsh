@@ -35,14 +35,20 @@ function __set_fzf() {
     "
 }
 
+function __set_theming() {
+    export QT_QPA_PLATFORMTHEME=qt5ct:qt6ct
+    export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=7,underline"
+}
+
 function main() {
     __set_basic
     __set_path
     __set_manpager
     __set_ime
     __set_fzf
+    __set_theming
 
-    unfunction __set_basic __set_path __set_manpager __set_ime __set_fzf
+    unfunction __set_basic __set_path __set_manpager __set_ime __set_fzf __set_theming
 }
 main
 unfunction main

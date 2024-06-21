@@ -10,26 +10,30 @@ function __fzf_config() {
     bindkey -M viins "^Y" fzf-cd-widget
 }
 
-function __load_zsh_highlighter () {
-    local target="\
-/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh\
-"
-
-    [[ -e "${target}" ]] && source "${target}"
+function __plugins() {
+    local _target _base="/usr/share/zsh/plugins/"
+    for _target in \
+        "${_base}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" \
+        "${_base}/zsh-autosuggestions/zsh-autosuggestions.zsh"; do
+        [ -e "${_target}" ] && source "${_target}"
+    done
+    bindkey "^ " autosuggest-accept
 }
 
 function __set_gpg() {
+    # REF:
+    #   https://wiki.archlinux.org/title/GnuPG#Configure_pinentry_to_use_the_correct_TTY
+
     # force tty-mode of gpg-agent
     export GPG_TTY=$(tty)
 }
 
-
 function main() {
     __fzf_config
-    __load_zsh_highlighter
+    __plugins
     __set_gpg
 
-    unfunction __fzf_config __load_zsh_highlighter __set_gpg
+    unfunction __fzf_config __plugins __set_gpg
 }
 main
 unfunction main

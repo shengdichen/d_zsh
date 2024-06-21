@@ -1,6 +1,6 @@
 function __cursor_config() {
     # use steady, beam-style cursor
-    echo -ne "\e[6 q"
+    printf "\e[6 q"
 }
 
 function __prompt_config() {

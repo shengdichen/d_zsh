@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=__firefox/dev_default
+Icon=firefox-developer-edition
+
+Exec=/usr/lib/firefox-developer-edition/firefox --private-window %u
