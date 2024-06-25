@@ -6,8 +6,12 @@ __tmux_running() {
 
 __tmux_start() {
     printf "tmux> launching...\n"
-    tmux -2 start-server
-    tmux source-file "${HOME}/.config/tmux/script/launch.tmux"
+    tmux start-server
+    "${HOME}/.config/tmux/script/task/sys.sh"
+    "${HOME}/.config/tmux/script/task/dot.sh" --no-attach
+
+    # so that there exists a history of attached sessions already
+    tmux attach-session -t "=dot:=main" ";" attach-session -t "=sys:=mnt.3"
 }
 
 __tmux_attach_session() {
