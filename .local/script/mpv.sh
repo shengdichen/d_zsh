@@ -3,7 +3,7 @@
 SCRIPT_PATH="$(realpath "$(dirname "${0}")")"
 cd "${SCRIPT_PATH}" || exit 3
 
-. "./util.sh"
+. "${HOME}/.local/lib/util.sh"
 
 __mpv_paste() {
     local _path _input
