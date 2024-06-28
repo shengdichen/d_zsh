@@ -16,6 +16,18 @@ __fzf() {
     fzf --reverse --height=73% 2>/dev/tty
 }
 
+__is_root() {
+    [ "$(id -u)" -eq 0 ]
+}
+
+__sudo() {
+    local s=""
+    if ! __is_root; then
+        s="sudo"
+    fi
+    echo "${s}"
+}
+
 __pkill() {
     pkill -f "${@}"
 }
