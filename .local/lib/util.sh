@@ -21,11 +21,11 @@ __is_root() {
 }
 
 __sudo() {
-    local s=""
+    local _s=""
     if ! __is_root; then
-        s="sudo"
+        _s="sudo"
     fi
-    echo "${s}"
+    printf "%s" "${_s}"
 }
 
 __pkill() {
