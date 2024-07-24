@@ -16,6 +16,46 @@ __fzf() {
     fzf --reverse --height=73% 2>/dev/tty
 }
 
+__separator() {
+    local _length=37 _char="-"
+    local _n_linebreaks_before=1 _n_linebreaks_after=1
+    while [ "${#}" -gt 0 ]; do
+        case "${1}" in
+            "--length")
+                _length="${2}"
+                shift 2
+                ;;
+            "--char")
+                if [ "${2}" = "%" ]; then
+                    _char="%%" # escape % for printf
+                else
+                    _char="${2}"
+                fi
+                shift 2
+                ;;
+            "--breaks-before")
+                _n_linebreaks_before="${2}"
+                shift 2
+                ;;
+            "--breaks-after")
+                _n_linebreaks_after="${2}"
+                shift 2
+                ;;
+        esac
+    done
+
+    if [ "${_n_linebreaks_before}" -gt 0 ]; then
+        printf -- "%0.s\n" $(seq 1 "${_n_linebreaks_before}")
+    fi
+
+    printf -- "%0.s${_char}" $(seq 1 "${_length}")
+    printf "\n"
+
+    if [ "${_n_linebreaks_after}" -gt 0 ]; then
+        printf -- "%0.s\n" $(seq 1 "${_n_linebreaks_after}")
+    fi
+}
+
 __fzf_opts() {
     local _is_first_opt="yes" _choice
     if ! _choice="$(
