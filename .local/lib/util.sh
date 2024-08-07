@@ -13,7 +13,32 @@ __x_11() {
 }
 
 __fzf() {
-    fzf --reverse --height=73% 2>/dev/tty
+    local _multi _height="73%"
+    while [ "${#}" -gt 0 ]; do
+        case "${1}" in
+            "--multi")
+                _multi="yes"
+                shift 1
+                ;;
+            "--height")
+                _height="${2}%"
+                shift 2
+                ;;
+        esac
+    done
+
+    if [ "${_multi}" ]; then
+        fzf \
+            --multi \
+            --reverse \
+            --height="${_height}" \
+            2>/dev/tty
+    else
+        fzf \
+            --reverse \
+            --height="${_height}" \
+            2>/dev/tty
+    fi
 }
 
 __separator() {
