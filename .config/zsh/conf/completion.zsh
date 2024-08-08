@@ -1,4 +1,9 @@
 function __basic() {
+    # REF:
+    #   https://zsh.sourceforge.io/Doc/Release/Completion-System.html#Initialization
+    local _completion_dir="${HOME}/.config/zsh/completion"
+    fpath=("${_completion_dir}/docker.zsh" ${fpath})
+
     autoload -Uz compinit
     compinit
 
