@@ -1,9 +1,3 @@
-# REF:
-#   https://minikube.sigs.k8s.io/docs/commands/completion/#minikube-completion-zsh
-# NOTE:
-#   generated with:
-#   $ minikube completion zsh
-
 #compdef minikube
 
 # Copyright 2016 The Kubernetes Authors.

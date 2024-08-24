@@ -1,9 +1,3 @@
-# REF:
-#   https://kubernetes.io/docs/reference/kubectl/generated/kubectl_completion
-# NOTE:
-#   generated with:
-#   $ kubectl completion zsh
-
 #compdef kubectl
 compdef _kubectl kubectl
 

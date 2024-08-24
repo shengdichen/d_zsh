@@ -1,9 +1,3 @@
-# REF:
-#   https://pipx.pypa.io/latest/docs/#pipx-completions
-# NOTE:
-#   generated with:
-#   $ register-python-argcomplete pipx
-
 #compdef pipx
 # Run something, muting output or redirecting it to the debug stream
 # depending on the value of _ARC_DEBUG.

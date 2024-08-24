@@ -1,9 +1,3 @@
-# REF:
-#   https://docs.docker.com/config/completion/#zsh
-# NOTE:
-#   generated with:
-#   $ docker completion zsh
-
 #compdef docker
 compdef _docker docker
 
