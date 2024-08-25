@@ -12,6 +12,41 @@ __x_11() {
     WAYLAND_DISPLAY="" nohup "${@}" >/dev/null 2>&1 &
 }
 
+__nvim() {
+    local _mode=""
+    if [ "${1}" = "--mode" ]; then
+        _mode="${2}"
+        shift 2
+    fi
+    if [ "${1}" = "--" ]; then shift; fi
+
+    if [ ! "${_mode}" ]; then
+        if [ "${#}" -eq 0 ]; then
+            nvim
+            return
+        fi
+        nvim -O "${@}"
+        return
+    fi
+
+    case "${_mode}" in
+        "diff")
+            if [ "${#}" -eq 0 ]; then
+                nvim -d
+                return
+            fi
+            nvim -d "${@}"
+            ;;
+        "ro")
+            if [ "${#}" -eq 0 ]; then
+                nvim -R -c "set nomodifiable"
+                return
+            fi
+            nvim -R -c "set nomodifiable" "${@}"
+            ;;
+    esac
+}
+
 __fzf() {
     local _multi _height="73%"
     while [ "${#}" -gt 0 ]; do
