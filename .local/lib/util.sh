@@ -133,6 +133,28 @@ __fzf_opts() {
     printf "%s" "${_choice}" | cut -d " " -f "1"
 }
 
+__yes_or_no() {
+    if [ "${1}" = "--" ]; then shift; fi
+
+    local _input
+    while true; do
+        printf "%s [y]es; [n]o? " "${1:-"choice/binary>"}"
+        read -r _input
+
+        case "${_input}" in
+            "y" | "Y" | "yes")
+                return 0
+                ;;
+            "n" | "N" | "no")
+                return 1
+                ;;
+            *)
+                printf "help> [y] for yes; [n] for no\n\n"
+                ;;
+        esac
+    done
+}
+
 __is_root() {
     [ "$(id -u)" -eq 0 ]
 }
