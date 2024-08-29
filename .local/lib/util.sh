@@ -1,7 +1,7 @@
 #!/usr/bin/env dash
 
 __nohup() {
-    nohup "${@}" 1>/dev/null 2>&1 &
+    nohup "${@}" >/dev/null 2>&1 &
 }
 
 __x() {
@@ -66,14 +66,14 @@ __fzf() {
         fzf \
             --multi \
             --reverse \
-            --height="${_height}" \
+            --height "${_height}" \
             2>/dev/tty
-    else
-        fzf \
-            --reverse \
-            --height="${_height}" \
-            2>/dev/tty
+        return
     fi
+    fzf \
+        --reverse \
+        --height "${_height}" \
+        2>/dev/tty
 }
 
 __separator() {
@@ -123,9 +123,9 @@ __fzf_opts() {
             if [ "${_is_first_opt}" ]; then
                 printf "%s  // default\n" "${_opt}"
                 _is_first_opt=""
-            else
-                printf "%s\n" "${_opt}"
+                continue
             fi
+            printf "%s\n" "${_opt}"
         done | __fzf
     )"; then
         _choice="${1}"
