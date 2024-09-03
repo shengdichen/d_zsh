@@ -47,30 +47,46 @@ __nvim() {
     esac
 }
 
+__unflatten() {
+    if [ "${#}" -eq 0 ]; then
+        cat
+        return
+    fi
+
+    local _e
+    for _e in "${@}"; do
+        printf "%s\n" "${_e}"
+    done
+}
+
 __fzf() {
     local _multi _height="73%"
     while [ "${#}" -gt 0 ]; do
         case "${1}" in
             "--multi")
                 _multi="yes"
-                shift 1
+                shift
                 ;;
             "--height")
                 _height="${2}%"
                 shift 2
                 ;;
+            "--")
+                shift && break
+                ;;
         esac
     done
 
     if [ "${_multi}" ]; then
-        fzf \
+        __unflatten "${@}" | fzf \
             --multi \
             --reverse \
             --height "${_height}" \
             2>/dev/tty
         return
     fi
-    fzf \
+
+    __unflatten "${@}" | fzf \
         --reverse \
         --height "${_height}" \
         2>/dev/tty
@@ -117,7 +133,7 @@ __separator() {
 }
 
 __fzf_opts() {
-    local _is_first_opt="yes" _choice
+    local _is_first_opt="yes" _choice _opt
     if ! _choice="$(
         for _opt in "${@}"; do
             if [ "${_is_first_opt}" ]; then
