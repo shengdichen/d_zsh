@@ -1,5 +1,7 @@
 #!/usr/bin/env dash
 
+SOURCE_SYNC="${SOURCE_SYNC}:-nist"
+
 . "${HOME}/.local/lib/util.sh"
 
 __print() {
@@ -34,8 +36,18 @@ __sync() {
     printf "time/pre> %s\n" "$(__print --less)"
 
     local _date_pattern="Date: "
+    local _source
+    case "${SOURCE_SYNC}" in
+        "google")
+            _source="http://google.com"
+            ;;
+        *)
+            _source="https://nist.time.gov"
+            ;;
+    esac
+
     "$(__sudo)" date -s "$(
-        curl -s --head "http://google.com" |
+        curl -s --head "${_source}" |
             grep "^${_date_pattern}" |
             sed "s/${_date_pattern}//g"
     )" >/dev/null
