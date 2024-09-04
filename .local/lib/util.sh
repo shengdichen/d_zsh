@@ -149,6 +149,10 @@ __fzf_opts() {
     printf "%s" "${_choice}" | cut -d " " -f "1"
 }
 
+__find_here() {
+    find -L "./" -mindepth 1 -printf "%P\n" | sort -n
+}
+
 __yes_or_no() {
     if [ "${1}" = "--" ]; then shift; fi
 
@@ -176,13 +180,19 @@ __is_root() {
 }
 
 __sudo() {
-    local _s=""
     if ! __is_root; then
-        _s="sudo"
+        printf "sudo"
+        return
     fi
-    printf "%s" "${_s}"
 }
 
 __pkill() {
     pkill -f "${@}"
+}
+
+__pgrep() {
+    pgrep \
+        -u "$(id -u)" \
+        -f "${1}" \
+        >/dev/null
 }
