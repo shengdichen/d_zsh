@@ -1,6 +1,12 @@
 function __fzf_config() {
-    source /usr/share/fzf/key-bindings.zsh
-    source /usr/share/fzf/completion.zsh
+    local _base=""
+    if [ "${TERMUX_VERSION}" ]; then
+        _base="/data/data/com.termux/files"
+    fi
+    local _f
+    for _f in "key-bindings" "completion"; do
+        source "${_base}/usr/share/fzf/${_f}.zsh"
+    done
 
     # NOTE:
     #   1. first unbind default M-c for cd'ing
