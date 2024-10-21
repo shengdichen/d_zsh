@@ -49,7 +49,7 @@ __nvim() {
 
 __unflatten() {
     if [ "${#}" -eq 0 ]; then
-        cat
+        cat -
         return
     fi
 
