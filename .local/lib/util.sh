@@ -59,6 +59,19 @@ __unflatten() {
     done
 }
 
+__is_in() {
+    local _target="${1}"
+    shift
+
+    local _candidate
+    for _candidate in "${@}"; do
+        if [ "${_candidate}" = "${_target}" ]; then
+            return
+        fi
+    done
+    return 1
+}
+
 __fzf() {
     local _multi _height="73%"
     while [ "${#}" -gt 0 ]; do
