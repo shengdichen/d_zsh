@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=__mpv
-Icon=mpv
-
-Exec=./.local/script/mpv.sh run
-Terminal=true
