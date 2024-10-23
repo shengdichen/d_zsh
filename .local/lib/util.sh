@@ -107,6 +107,10 @@ __fzf() {
     eval "${_cmd}" "${*}" 2>/dev/tty
 }
 
+__line_number() {
+    nl -b a -w 2 -n "rz" -s "  "
+}
+
 __separator() {
     local _length=37 _char="-"
     local _n_linebreaks_before=1 _n_linebreaks_after=1
