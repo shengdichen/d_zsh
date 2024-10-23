@@ -1,6 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=__fpass
-
-Exec=./.local/script/fpass.sh run
-Terminal=true
