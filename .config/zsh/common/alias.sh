@@ -24,8 +24,8 @@ __dev() {
 
     alias m="make"
 
-    afe() {
-        "${HOME}/.local/script/fzf.sh" "${@}"
+    __locate() {
+        "${HOME}/.local/script/locate.sh" "${@}"
     }
 }
 
