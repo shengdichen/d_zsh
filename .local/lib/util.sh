@@ -151,8 +151,36 @@ __fzf_opts() {
     printf "%s" "${_choice}" | cut -d " " -f "1"
 }
 
-__find_here() {
-    find -L "./" -mindepth 1 -printf "%P\n" | sort -n
+__find() {
+    local _sort="yes" _path=""
+    while [ "${#}" -gt 0 ]; do
+        case "${1}" in
+            "--no-sort")
+                _sort=""
+                shift
+                ;;
+            "--path")
+                _path="${2}"
+                shift 2
+                ;;
+            "--")
+                shift && break
+                ;;
+            *)
+                break
+                ;;
+        esac
+    done
+
+    if [ ! "${_path}" ]; then
+        find -L "." -follow -mindepth 1 -printf "%P\n" "${@}"
+    else
+        find -L "${_path}" -follow -mindepth 1 "${@}"
+    fi | if [ "${_sort}" ]; then
+        sort -n
+    else
+        cat -
+    fi
 }
 
 __yes_or_no() {

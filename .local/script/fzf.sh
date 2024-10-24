@@ -50,30 +50,43 @@ __to_path() {
     local _type=""
     case "${1}" in
         "dir")
-            shift
             _type="d"
+            shift
             ;;
         "file")
-            shift
             _type="f"
+            shift
             ;;
     esac
 
-    if [ ! "${_type}" ]; then
-        find -L . -printf "%P\n" | __fzf
+    local _path
+    if [ "${#}" -eq 0 ]; then
+        _path="."
     else
-        find -L . -type "${_type}" -printf "%P\n" | __fzf
+        _path="${1}"
+        shift
     fi
+
+    if [ ! "${_type}" ]; then
+        __find --no-sort --path "${_path}" -- -printf "%P\n" "${@}"
+    else
+        __find --no-sort --path "${_path}" -- -type "${_type}" -printf "%P\n" "${@}" |
+            if [ "${_type}" = "d" ]; then
+                sed "s/\(.*\)/\1\//"
+            else
+                cat -
+            fi
+    fi | __fzf
 }
 
 case "${1}" in
     "dir")
         shift
-        __to_path dir
+        __to_path dir "${@}"
         ;;
     "file")
         shift
-        __to_path file
+        __to_path file "${@}"
         ;;
     "vifm")
         shift
