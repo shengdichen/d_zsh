@@ -30,7 +30,11 @@ __to_line() {
     }
 
     local _res
-    if ! _res="$(__rg "${@}" | cut -c "3-" | __fzf --height 97)"; then # cut: hide leading "./"
+    if ! _res="$(
+        __rg "${@}" |
+            cut -c "3-" |                                 # hide leading "./"
+            __fzf --delimiter "${_separator}" --nth "3.." # search content only
+    )"; then
         return
     fi
 
