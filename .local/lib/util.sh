@@ -71,24 +71,26 @@ __fzf() {
                 _height="${2}%"
                 shift 2
                 ;;
-            "--")
-                shift && break
+            *)
+                break
                 ;;
         esac
     done
 
     if [ "${_multi}" ]; then
-        __unflatten "${@}" | fzf \
+        fzf \
             --multi \
             --reverse \
             --height "${_height}" \
+            "${@}" \
             2>/dev/tty
         return
     fi
 
-    __unflatten "${@}" | fzf \
+    fzf \
         --reverse \
         --height "${_height}" \
+        "${@}" \
         2>/dev/tty
 }
 
