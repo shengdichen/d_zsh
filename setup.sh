@@ -10,7 +10,7 @@ __mkdir() {
 }
 
 __completion() {
-    local _update=""
+    local _update="" _need_compinit=""
     case "${1}" in
         "--update" | "-u")
             shift
@@ -24,6 +24,7 @@ __completion() {
         # REF:
         #   https://man.archlinux.org/man/rg.1.en#SHELL_COMPLETION
         cp -f "/usr/share/zsh/site-functions/_rg" "${_f}"
+        _need_compinit="yes"
     fi
 
     _f="${_completion_dir}/docker.zsh"
@@ -31,6 +32,7 @@ __completion() {
         # REF:
         #   https://docs.docker.com/config/completion/#zsh
         docker completion zsh >"${_f}"
+        _need_compinit="yes"
     fi
 
     _f="${_completion_dir}/kubectl.zsh"
@@ -38,6 +40,7 @@ __completion() {
         # REF:
         #   https://kubernetes.io/docs/reference/kubectl/generated/kubectl_completion
         kubectl completion zsh >"${_f}"
+        _need_compinit="yes"
     fi
 
     _f="${_completion_dir}/minikube.zsh"
@@ -45,6 +48,7 @@ __completion() {
         # REF:
         #   https://minikube.sigs.k8s.io/docs/commands/completion/#minikube-completion-zsh
         minikube completion zsh >"${_f}"
+        _need_compinit="yes"
     fi
 
     _f="${_completion_dir}/pipx.zsh"
@@ -52,6 +56,19 @@ __completion() {
         # REF:
         #   https://pipx.pypa.io/latest/docs/#pipx-completions
         register-python-argcomplete pipx >"${_f}"
+        _need_compinit="yes"
+    fi
+
+    _f="${HOME}/.config/zsh/.zcompdump"
+    __compinit() {
+        zsh -c "autoload -Uz compinit && compinit"
+    }
+    if [ ! -e "${_f}" ]; then
+        __compinit
+        return
+    fi
+    if [ "${_need_compinit}" ]; then
+        rm "${_f}" && __compinit
     fi
 }
 
