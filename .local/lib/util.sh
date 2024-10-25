@@ -60,16 +60,27 @@ __unflatten() {
 }
 
 __fzf() {
-    local _multi _height="73%"
+    local _multi _header _prompt _height
     while [ "${#}" -gt 0 ]; do
         case "${1}" in
             "--multi")
                 _multi="yes"
                 shift
                 ;;
-            "--height")
-                _height="${2}%"
+            "--header")
+                _header="${2}"
                 shift 2
+                ;;
+            "--prompt")
+                _prompt="${2}"
+                shift 2
+                ;;
+            "--height")
+                _height="${2}"
+                shift 2
+                ;;
+            "--")
+                shift && break
                 ;;
             *)
                 break
@@ -77,21 +88,23 @@ __fzf() {
         esac
     done
 
+    local _cmd="fzf"
     if [ "${_multi}" ]; then
-        fzf \
-            --multi \
-            --reverse \
-            --height "${_height}" \
-            "${@}" \
-            2>/dev/tty
-        return
+        _cmd="${_cmd} --multi"
+    else
+        # hide marker, which is for multi-mode only
+        _cmd="${_cmd} --pointer \"> \" --marker \"\" --marker-multi-line \"\""
     fi
-
-    fzf \
-        --reverse \
-        --height "${_height}" \
-        "${@}" \
-        2>/dev/tty
+    if [ "${_header}" ] && [ "${_header}" != "" ]; then
+        _cmd="${_cmd} --header \"${_header}\""
+    fi
+    if [ "${_prompt}" ] && [ "${_prompt}" != "" ]; then
+        _cmd="${_cmd} --prompt \"${_prompt}> \""
+    fi
+    if [ "${_height}" ]; then
+        _cmd="${_cmd} --height ${_height}%"
+    fi
+    eval "${_cmd}" "${*}" 2>/dev/tty
 }
 
 __separator() {
