@@ -1,0 +1,19 @@
+--follow
+
+--hidden
+--glob=!.git/*
+
+--color=always
+--colors=path:fg:7
+--colors=line:fg:7
+--colors=column:fg:7
+# clear styles (bold/intense) first
+--colors=match:none
+--colors=match:fg:5
+
+--no-heading
+--with-filename
+--line-number
+--column
+
+# vim: filetype=conf

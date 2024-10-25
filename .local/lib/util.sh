@@ -107,6 +107,30 @@ __fzf() {
     eval "${_cmd}" "${*}" 2>/dev/tty
 }
 
+__rg() {
+    local _config="${HOME}/.config/ripgrep/config"
+    while [ "${#}" -gt 0 ]; do
+        case "${1}" in
+            "--config")
+                _config="${2}"
+                shift 2
+                ;;
+            "--")
+                shift && break
+                ;;
+            *)
+                break
+                ;;
+        esac
+    done
+
+    if [ "${#}" -eq 0 ]; then
+        RIPGREP_CONFIG_PATH="${_config}" rg ".*"
+        return
+    fi
+    RIPGREP_CONFIG_PATH="${_config}" rg "${@}"
+}
+
 __line_number() {
     nl -b a -w 2 -n "rz" -s "  "
 }
