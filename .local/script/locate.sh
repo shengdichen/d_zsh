@@ -13,27 +13,14 @@ __to_line() {
     # a separator unlikely found in filenames
     local _separator=":::"
 
-    __rg() {
-        if [ "${#}" -eq 0 ]; then
-            rg \
-                --hidden --follow --glob "!.git/*" \
-                --color never --no-heading --with-filename --line-number \
-                --field-match-separator "${_separator}" \
-                ".*" -- .
-            return
-        fi
-        rg \
-            --hidden --follow --glob "!.git/*" \
-            --color never --no-heading --with-filename --line-number \
-            --field-match-separator "${_separator}" \
-            ".*" -- "${@}"
-    }
-
     local _res
     if ! _res="$(
-        __rg "${@}" |
-            cut -c "3-" |                                 # hide leading "./"
-            __fzf --delimiter "${_separator}" --nth "3.." # search content only
+        __rg -- \
+            --colors "match:none" \
+            --no-column \
+            --field-match-separator "${_separator}" \
+            ".*" "${@}" |
+            __fzf --ansi --delimiter "${_separator}" --nth "3.." # search content only
     )"; then
         return
     fi
