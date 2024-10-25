@@ -19,6 +19,13 @@ __completion() {
     esac
     local _completion_dir="${SCRIPT_PATH}/.config/zsh/completion" _f
 
+    _f="${_completion_dir}/ripgrep.zsh"
+    if [ "${_update}" ] || [ ! -e "${_f}" ]; then
+        # REF:
+        #   https://man.archlinux.org/man/rg.1.en#SHELL_COMPLETION
+        cp -f "/usr/share/zsh/site-functions/_rg" "${_f}"
+    fi
+
     _f="${_completion_dir}/docker.zsh"
     if [ "${_update}" ] || [ ! -e "${_f}" ]; then
         # REF:
