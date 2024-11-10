@@ -145,6 +145,23 @@ __separator() {
     fi
 }
 
+__tab() {
+    local _width=4 _count=1
+    while [ "${#}" -gt 0 ]; do
+        case "${1}" in
+            "--width")
+                _width="${2}"
+                shift 2
+                ;;
+            "--count")
+                _count="${2}"
+                shift 2
+                ;;
+        esac
+    done
+    printf "%0.s " $(seq 1 $((_width * _count)))
+}
+
 __fzf_opts() {
     local _is_first_opt="yes" _choice _opt
     if ! _choice="$(
