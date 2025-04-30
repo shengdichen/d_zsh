@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=__pass
+
+Exec=bash -c "${HOME}/.local/script/pass.sh"
+Terminal=true

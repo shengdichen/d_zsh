@@ -64,8 +64,8 @@ __network() {
 __misc() {
     alias swayug="sway --unsupported-gpu"
 
-    fpass() {
-        "${HOME}/.local/script/fpass.sh" run
+    __pass() {
+        "${HOME}/.local/script/pass.sh"
     }
 
     __update_wayland_display() {

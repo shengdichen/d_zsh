@@ -49,7 +49,7 @@ __nvim() {
 
 __unflatten() {
     if [ "${#}" -eq 0 ]; then
-        cat
+        cat -
         return
     fi
 
@@ -57,6 +57,19 @@ __unflatten() {
     for _e in "${@}"; do
         printf "%s\n" "${_e}"
     done
+}
+
+__is_in() {
+    local _target="${1}"
+    shift
+
+    local _candidate
+    for _candidate in "${@}"; do
+        if [ "${_candidate}" = "${_target}" ]; then
+            return
+        fi
+    done
+    return 1
 }
 
 __fzf() {
@@ -130,6 +143,23 @@ __separator() {
     if [ "${_n_linebreaks_after}" -gt 0 ]; then
         printf -- "%0.s\n" $(seq 1 "${_n_linebreaks_after}")
     fi
+}
+
+__tab() {
+    local _width=4 _count=1
+    while [ "${#}" -gt 0 ]; do
+        case "${1}" in
+            "--width")
+                _width="${2}"
+                shift 2
+                ;;
+            "--count")
+                _count="${2}"
+                shift 2
+                ;;
+        esac
+    done
+    printf "%0.s " $(seq 1 $((_width * _count)))
 }
 
 __fzf_opts() {
