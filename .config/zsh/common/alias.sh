@@ -24,8 +24,17 @@ __dev() {
 
     alias m="make"
 
-    afe() {
-        "${HOME}/.local/script/fzf.sh" "${@}"
+    __locate() {
+        "${HOME}/.local/script/locate.sh" "${@}"
+    }
+
+    __rg() {
+        local _config="${HOME}/.config/ripgrep/config"
+        if [ "${#}" -eq 0 ]; then
+            RIPGREP_CONFIG_PATH="${_config}" rg ".*"
+            return
+        fi
+        RIPGREP_CONFIG_PATH="${_config}" rg "${@}"
     }
 }
 

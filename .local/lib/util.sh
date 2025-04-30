@@ -73,36 +73,79 @@ __is_in() {
 }
 
 __fzf() {
-    local _multi _height="73%"
+    local _multi _header _prompt _height
     while [ "${#}" -gt 0 ]; do
         case "${1}" in
             "--multi")
                 _multi="yes"
                 shift
                 ;;
+            "--header")
+                _header="${2}"
+                shift 2
+                ;;
+            "--prompt")
+                _prompt="${2}"
+                shift 2
+                ;;
             "--height")
-                _height="${2}%"
+                _height="${2}"
                 shift 2
                 ;;
             "--")
                 shift && break
                 ;;
+            *)
+                break
+                ;;
         esac
     done
 
+    local _cmd="fzf"
     if [ "${_multi}" ]; then
-        __unflatten "${@}" | fzf \
-            --multi \
-            --reverse \
-            --height "${_height}" \
-            2>/dev/tty
+        _cmd="${_cmd} --multi"
+    else
+        # hide marker, which is for multi-mode only
+        _cmd="${_cmd} --pointer \"> \" --marker \"\" --marker-multi-line \"\""
+    fi
+    if [ "${_header}" ] && [ "${_header}" != "" ]; then
+        _cmd="${_cmd} --header \"${_header}\""
+    fi
+    if [ "${_prompt}" ] && [ "${_prompt}" != "" ]; then
+        _cmd="${_cmd} --prompt \"${_prompt}> \""
+    fi
+    if [ "${_height}" ]; then
+        _cmd="${_cmd} --height ${_height}%"
+    fi
+    eval "${_cmd}" "${*}" 2>/dev/tty
+}
+
+__rg() {
+    local _config="${HOME}/.config/ripgrep/config"
+    while [ "${#}" -gt 0 ]; do
+        case "${1}" in
+            "--config")
+                _config="${2}"
+                shift 2
+                ;;
+            "--")
+                shift && break
+                ;;
+            *)
+                break
+                ;;
+        esac
+    done
+
+    if [ "${#}" -eq 0 ]; then
+        RIPGREP_CONFIG_PATH="${_config}" rg ".*"
         return
     fi
+    RIPGREP_CONFIG_PATH="${_config}" rg "${@}"
+}
 
-    __unflatten "${@}" | fzf \
-        --reverse \
-        --height "${_height}" \
-        2>/dev/tty
+__line_number() {
+    nl -b a -w 2 -n "rz" -s "  "
 }
 
 __separator() {
@@ -179,8 +222,36 @@ __fzf_opts() {
     printf "%s" "${_choice}" | cut -d " " -f "1"
 }
 
-__find_here() {
-    find -L "./" -mindepth 1 -printf "%P\n" | sort -n
+__find() {
+    local _sort="yes" _path=""
+    while [ "${#}" -gt 0 ]; do
+        case "${1}" in
+            "--no-sort")
+                _sort=""
+                shift
+                ;;
+            "--path")
+                _path="${2}"
+                shift 2
+                ;;
+            "--")
+                shift && break
+                ;;
+            *)
+                break
+                ;;
+        esac
+    done
+
+    if [ ! "${_path}" ]; then
+        find -L "." -follow -mindepth 1 -printf "%P\n" "${@}"
+    else
+        find -L "${_path}" -follow -mindepth 1 "${@}"
+    fi | if [ "${_sort}" ]; then
+        sort -n
+    else
+        cat -
+    fi
 }
 
 __yes_or_no() {

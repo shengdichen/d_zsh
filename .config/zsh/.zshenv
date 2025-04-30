@@ -26,12 +26,49 @@ function __set_ime() {
 }
 
 function __set_fzf() {
+    # REF:
+    #   https://vitormv.github.io/fzf-themes/
+
+    export FZF_DEFAULT_OPTS="$(
+        printf "--reverse --height 79%%"
+
+        printf " --color "
+        printf "bg:-1,fg:-1,"
+        printf "bg+:8,fg+:-1:regular,"
+        printf "hl:5,"
+        printf "hl+:5:regular"
+
+        printf " --color header:7"
+        # printf " --header-first"  # header before prompt
+
+        printf " --color pointer:15:regular"  # current cursor-line
+        printf " --pointer \"\""  # hide pointer
+
+        printf " --color marker:7:regular"  # selected in multi
+        printf " --marker \"+ \""
+        printf " --marker-multi-line \"+| \""
+
+        printf " --color prompt:7:regular"
+        printf " --prompt \"> \""
+        printf " --color query:-1:regular"  # actual input
+
+        printf " --color "
+        printf "spinner:7:regular,"
+        printf "info:7"  # counter of matches & (multi-)selections
+
+        printf " --color separator:7"  # line after |info|
+        printf " --no-separator"  # hide completely
+
+        printf " --color "
+        printf "border:8,"
+        printf "gutter:-1,"
+        printf "scrollbar:7"
+    )"
+
     export FZF_COMPLETION_TRIGGER="jk"
 
     export FZF_COMPLETION_OPTS="\
-        --border=none \
         --prompt='% ' \
-        --info=inline:' <<  ' \
     "
 }
 
