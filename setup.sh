@@ -74,6 +74,12 @@ __completion() {
 
 __stow() {
     stow -R --target "${HOME}" "linux"
+
+    (
+        local _dir_rg="${HOME}/.config/ripgrep"
+        mkdir -p "${_dir_rg}"
+        cd "./common" && stow -R --target "${_dir_rg}" "ripgrep"
+    )
 }
 
 __mkdir
