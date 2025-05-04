@@ -17,7 +17,7 @@ __completion() {
             _update="yes"
             ;;
     esac
-    local _completion_dir="${SCRIPT_PATH}/.config/zsh/completion" _f
+    local _completion_dir="${SCRIPT_PATH}/linux/.config/zsh/completion" _f
 
     _f="${_completion_dir}/ripgrep.zsh"
     if [ "${_update}" ] || [ ! -e "${_f}" ]; then
@@ -73,9 +73,7 @@ __completion() {
 }
 
 __stow() {
-    (
-        cd .. && stow -R "$(basename "${SCRIPT_PATH}")"
-    )
+    stow -R --target "${HOME}" "linux"
 }
 
 __mkdir
