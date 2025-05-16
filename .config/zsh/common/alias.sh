@@ -4,6 +4,10 @@ __base() {
     }
     alias q="exit"
 
+    __sudo_reset() {
+        faillock --reset
+    }
+
     tatt() {
         "${HOME}/.local/script/tmux.sh" run
     }
